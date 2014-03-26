@@ -1,0 +1,14 @@
+{% if festa %}
+    <ul>
+        <li>
+        <p>Nom: {{ festa.nom }}</p>
+        <p>Data d'inici: {{ festa.data_inici }}</p>
+        <p>Data de finalització: {{ festa.data_fi }}</p>
+        <p>Categoria: {{ festa.categoria}}</p>
+        <p>Descripció: {{ festa.descripcio }}</p>
+        <p>Localitat: {{ festa.localitat }}</p>
+        </li>
+    </ul>
+{% else %}
+    <p>No Party</p>
+{% endif %}

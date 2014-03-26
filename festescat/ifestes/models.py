@@ -1,7 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.forms import ModelForm
 
 # Create your models here.
+
 
 class Ubicacions(models.Model):
     latitude = models.FloatField()
@@ -10,8 +12,10 @@ class Ubicacions(models.Model):
     comarca = models.CharField(max_length=30)
     poble = models.CharField(max_length=30)
     adressa = models.TextField(max_length=100)
+
     def __unicode__(self):
         return self.adressa
+
 
 class Festes(models.Model):
     nom = models.CharField(max_length=50)
@@ -20,8 +24,10 @@ class Festes(models.Model):
     categoria = models.CharField(max_length=30)
     descripcio = models.TextField(max_length=200)
     localitat = models.CharField(max_length=30)
+
     def __unicode__(self):
         return self.nom
+
 
 class Events(models.Model):
     nom = models.CharField(max_length=50)
@@ -30,18 +36,27 @@ class Events(models.Model):
     festa = models.ForeignKey(Festes)
     ubicacio = models.ForeignKey(Ubicacions)
     data = models.DateTimeField()
+
     def __unicode__(self):
         return self.nom
+
 
 class Organitzadors(User):
     empresa = models.CharField(max_length=30)
     festa = models.ManyToManyField(Festes, blank=True)
     event = models.ManyToManyField(Events, blank=True)
+
     def __unicode__(self):
         return self.username
 
 
 class Usuaris(User):
     assistencia = models.ManyToManyField(Events)
+
     def __unicode__(self):
         return self.username
+
+
+class UserForm(ModelForm):
+    class Meta:
+        model = User
