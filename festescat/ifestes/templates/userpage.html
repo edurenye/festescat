@@ -1,0 +1,20 @@
+<html>
+<head>
+    <title>{{ username }} Sobres</title>
+</head>
+<body>
+    <h1>Asistencies de {{ username }}</h1>
+    {% if festes %}
+    <ul>
+    {% for event in festes %}
+    <li>
+    {{festes.event.nom}}
+    {{ event.tipus}} - {{ sobre.data }}€
+    </li>
+    {% endfor %}
+    </ul>
+    {% else %}
+    <p>No ha asistit a cap festa.</p>
+    {% endif %}
+</body>
+</html>

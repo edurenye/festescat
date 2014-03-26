@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+    <head>
+    <title>{{ titlehead }}</title>
+    </head>
+<body>
+    <h1>{{ pagetitle }}</h1>
+    {% if user.username %}
+    <p>Benvingut {{ user.username }}!
+    Aquí podrà gestionar els seus sobres!</p>
+    {% else %}
+    <p>Benvingut usuari: Obligatori fer <a href="/login/">sign in</a> per poder accedir al contingut.</p>
+    {% endif %}
+    <footer>{{ footer}}</footer>
+</body>
+</html>

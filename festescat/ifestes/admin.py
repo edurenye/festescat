@@ -6,4 +6,3 @@ admin.site.register(Festes)
 admin.site.register(Events)
 admin.site.register(Organitzadors)
 admin.site.register(Usuaris)
-
