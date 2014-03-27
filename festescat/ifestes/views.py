@@ -26,16 +26,11 @@ def mainpage(request):
 
 def userpage(request, username):
     if request.method == 'POST':
-        uf = UserFormEdit(request.POST, prefix='user')
+        user = request.user
+        uf = UserFormEdit(request.POST, prefix='user', instance=user)
         if uf.is_valid():
-            user_username = request.POST['user-username']
-            user_email = request.POST['user-email']
             user_password = request.POST['user-password']
-            usuari = request.user
-            user = Usuaris.objects.get(username__exact=usuari.username)
             user.set_password(user_password)
-            user.objects.username = user_username
-            user.objects.email = user_email
             user.save()
             return HttpResponseRedirect('/')
     else:
