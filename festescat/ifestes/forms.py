@@ -4,16 +4,55 @@ from django import forms
 
 
 class UserForm(ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput())
+    username = forms.CharField(label="Introdueix un usuari")
+    email = forms.EmailField(label="Introdueix un email")
+    password = forms.CharField(label="Introdueix una contrasenya",
+        widget=forms.PasswordInput())
+    re_password = forms.CharField(label="Torna a introduir la contrasenya",
+        widget=forms.PasswordInput())
 
     class Meta:
         model = Usuaris
         exclude = ['user']
-        fields = ['username', 'password', 'email']
+        fields = ['username', 'email', 'password', 're_password']
+
+    def clean_re_password(self):
+        password = self.cleaned_data.get('password')
+        re_password = self.cleaned_data.get('re_password')
+        if not re_password:
+            raise forms.ValidationError("You must confirm your password")
+        if password != re_password:
+            raise forms.ValidationError("Your passwords do not match")
+        return re_password
+
+
+class UserFormEdit(ModelForm):
+    username = forms.CharField(label="Introdueix un nou usuari")
+    email = forms.EmailField(label="Introdueix un nou email")
+    password = forms.CharField(label="Introdueix una nova contrasenya",
+        widget=forms.PasswordInput())
+    re_password = forms.CharField(label="Torna a introduir la nova contrasenya",
+        widget=forms.PasswordInput())
+
+    class Meta:
+        model = Usuaris
+        exclude = ['user']
+        fields = ['username', 'email', 'password', 're_password']
+
+    def clean_re_password(self):
+        password = self.cleaned_data.get('password')
+        re_password = self.cleaned_data.get('re_password')
+        if not re_password:
+            raise forms.ValidationError("You must confirm your password")
+        if password != re_password:
+            raise forms.ValidationError("Your passwords do not match")
+        return re_password
 
 
 class LoginForm(ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput())
+    username = forms.CharField(label="Introdueix el teu usuari")
+    password = forms.CharField(label="Introdueix la teva contrasenya",
+        widget=forms.PasswordInput())
 
     class Meta:
         model = Usuaris

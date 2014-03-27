@@ -1,13 +1,15 @@
 {% extends "layout.html" %}
 {% block content %}
+<div class="col-md-8">
 <h1>Totes les festes</h1>
 {% if festes %}
     <ul>
         {% for festa in festes %}
-        <li><a href="/festes/{{festa.id}}"><h3>{{festa.nom}}</h3></a></li>
+        <li><p><a href="/festes/{{festa.id}}"><h3>{{festa.nom}}</h3></a></p></li>
         {% endfor %}
     </ul>
 {% else %}
     <p>No hi ha cap festa</p>
 {% endif %}
+</div>
 {% endblock %}

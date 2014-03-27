@@ -1,5 +1,4 @@
 from django.conf.urls import patterns, include, url
-from rest_framework.urlpatterns import format_suffix_patterns
 from ifestes.views import *
 
 # Uncomment the next two lines to enable the admin:
@@ -28,14 +27,12 @@ urlpatterns = patterns('',
 )
 
 format_urlpatterns = patterns('',
-    url(r'^festes$', festes, name='festes'),
-    url(r'^festes/(?P<idFesta>\d+)$', festa),
-    url(r'^ubicacions$', ubicacions, name='ubicacions'),
-    url(r'^ubicacions/(?P<idUbi>\d+)$', ubicacio),
-    url(r'^events$', events, name='events'),
-    url(r'^events/(?P<idEvent>\d+)$', event),
+    url(r'^festes\.(?P<format>[a-z0-9]+)$', festes, name='festes'),
+    url(r'^festes/(?P<idFesta>\d+)\.(?P<format>[a-z0-9]+)$', festa),
+    url(r'^ubicacions\.(?P<format>[a-z0-9]+)$', ubicacions, name='ubicacions'),
+    url(r'^ubicacions/(?P<idUbi>\d+)\.(?P<format>[a-z0-9]+)$', ubicacio),
+    url(r'^events\.(?P<format>[a-z0-9]+)$', events, name='events'),
+    url(r'^events/(?P<idEvent>\d+)\.(?P<format>[a-z0-9]+)$', event),
 )
-
-format_urlpatterns = format_suffix_patterns(format_urlpatterns)
 
 urlpatterns += format_urlpatterns

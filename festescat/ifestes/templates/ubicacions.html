@@ -1,13 +1,15 @@
 {% extends "layout.html" %}
 {% block content %}
+<div class="col-md-8">
 <h1>Totes les ubicacions</h1>
 {% if ubicacions %}
     <ul>
         {% for ubicacio in ubicacions %}
-        <li><a href="/ubicacions/{{ubicacio.id}}"><h3>{{ubicacio.adressa}}</h3></a></li>
+        <li><p><a href="/ubicacions/{{ubicacio.id}}"><h3>{{ubicacio.adressa}}</h3></a></p></li>
         {% endfor %}
     </ul>
 {% else %}
     <p>No hi ha ubicacions</p>
 {% endif %}
+</div>
 {% endblock %}

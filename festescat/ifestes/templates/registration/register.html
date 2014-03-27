@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
+<div class="col-md-8">
     <h1>Registra un nou usuari</h1>
     <form id='formulari' method="POST" action="">
         {% csrf_token %}
@@ -8,4 +9,5 @@
         </table>
         <input type="submit" value="Registrar">
     </form>
+</div>
 {% endblock %}

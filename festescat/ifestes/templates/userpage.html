@@ -1,16 +1,28 @@
 {% extends "layout.html" %}
 {% block content %}
-    <h1>Asistencies de {{ username }}</h1>
-    {% if events %}
-    <ul>
-    {% for event in events %}
-    <li>
-    {{event.nom}}
-    {{ event.tipus}} - {{ event.nom }}€
-    </li>
-    {% endfor %}
-    </ul>
-    {% else %}
-    <p>No ha asistit a cap event.</p>
-    {% endif %}
+    <div class="col-md-6">
+        <h1>Asistencies de {{ username }}</h1>
+        {% if events %}
+        <ul>
+        {% for event in events %}
+        <li>
+        <h2>{{event.nom}}</h2>
+        <p><a href="/events/{{event.id}}">{{ event.tipus}} - {{ event.nom }}</a></p>
+        </li>
+        {% endfor %}
+        </ul>
+        {% else %}
+        <p>No ha asistit a cap event.</p>
+        {% endif %}
+    </div>
+    <div class="col-md-6">
+        <h1>Edita el perfil</h1>
+        <form id='formulari' method="POST" action="">
+        {% csrf_token %}
+        <table>
+            {{userform}}
+        </table>
+        <input type="submit" value="Actualitza">
+    </form>
+    </div>
 {% endblock %}

@@ -1,8 +1,9 @@
 {% extends "layout.html" %}
 {% block content %}
+<div class="col-md-8">
+<h1>Festa</h1>
 {% if festa %}
     <ul>
-        <li>
         <p>Nom: {{ festa.nom }}</p>
         <p>Data d'inici: {{ festa.data_inici }}</p>
         <p>Data de finalització: {{ festa.data_fi }}</p>
@@ -13,15 +14,15 @@
             <h2>Events</h2>
             <ul>
             {% for event in events %}
-                <li><a href="/events/{{event.id}}"><h3>{{event.nom}}</h3></a></li>
+                <li><p><a href="/events/{{event.id}}"><h3>{{event.nom}}</h3></a></p></li>
             {% endfor %}
             </ul>
         {% else %}
             <p>No hi ha cap event</p>
         {% endif %}
-        </li>
     </ul>
 {% else %}
     <p>No existeix aquesta festa.</p>
 {% endif %}
+</div>
 {% endblock %}

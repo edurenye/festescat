@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
+    <div class="col-md-8">
     <h1>{{ pagetitle }}</h1>
     {% if user.username %}
     <p>Benvingut {{ user.username }}!
@@ -10,5 +11,5 @@
     <p>Obligatori fer <a href="/login/">sign in</a> per poder accedir al contingut.</p>
     <p>O <a href="/register/">Registrat</a> en cas de ser un usuari nou.</p>
     {% endif %}
-    <footer>{{ footer }}</footer>
+    </div>
 {% endblock %}

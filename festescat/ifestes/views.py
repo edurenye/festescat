@@ -3,8 +3,6 @@
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.template import Context, RequestContext
 from django.template.loader import get_template
-from django.contrib.auth.models import User
-#UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, render_to_response
@@ -27,19 +25,35 @@ def mainpage(request):
 
 
 def userpage(request, username):
-    try:
-        user = Usuaris.objects.get(username=username)
-        print(user)
-    except:
-        raise Http404('User not found.')
-    events = user.assistencia.all()
-    template = get_template('userpage.html')
-    variables = Context({
-        'username': username,
-        'events': events
-        })
-    output = template.render(variables)
-    return HttpResponse(output)
+    if request.method == 'POST':
+        uf = UserFormEdit(request.POST, prefix='user')
+        if uf.is_valid():
+            user_username = request.POST['user-username']
+            user_email = request.POST['user-email']
+            user_password = request.POST['user-password']
+            usuari = request.user
+            user = Usuaris.objects.get(username__exact=usuari.username)
+            user.set_password(user_password)
+            user.objects.username = user_username
+            user.objects.email = user_email
+            user.save()
+            return HttpResponseRedirect('/')
+    else:
+        uf = UserFormEdit(prefix='user')
+        try:
+            user = Usuaris.objects.get(username=username)
+            print(user)
+        except:
+            raise Http404('User not found.')
+        events = user.assistencia.all()
+        variables = Context({
+            'user': request.user,
+            'username': username,
+            'events': events
+            })
+        return render_to_response('userpage.html',
+            dict(userform=uf),
+            context_instance=RequestContext(request, variables))
 
 
 def entra(request):
@@ -81,19 +95,21 @@ def register(request):
         uf = UserForm(request.POST, prefix='user')
         if uf.is_valid():
             user_username = request.POST['user-username']
+            user_email = request.POST['user-email']
             user_password = request.POST['user-password']
-            user = User.objects.create_user(user_username, user_password)
+            user = Usuaris.objects.create_user(user_username, user_email,
+                user_password)
             #user = uf.models
             user.set_password(user_password)
-
-            # = User.set_password(uf.password)
             user.save()
+            user = authenticate(username=user_username, password=user_password)
+            login(request, user)
             return HttpResponseRedirect('/')
     else:
         uf = UserForm(prefix='user')
-        return render_to_response('registration/register.html',
-            dict(userform=uf),
-            context_instance=RequestContext(request))
+    return render_to_response('registration/register.html',
+        dict(userform=uf),
+        context_instance=RequestContext(request))
 
 
 @login_required(login_url='/login')

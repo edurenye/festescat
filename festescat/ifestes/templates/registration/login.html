@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
+<div class="col-md-8">
     <h1>User Login</h1>
     {% if form.has_errors or invalid%}
     <p>Error validant usuari.</p>
@@ -14,4 +15,5 @@
         </table>
         <input type="submit" value="login" />
     </form>
+</div>
 {% endblock %}

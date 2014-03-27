@@ -1,13 +1,15 @@
 {% extends "layout.html" %}
 {% block content %}
+<div class="col-md-8">
 <h1>Tots els events</h1>
 {% if events %}
     <ul>
         {% for event in events %}
-        <li><a href="/events/{{event.id}}"><h3>{{event.nom}}</h3></a></li>
+        <li><p><a href="/events/{{event.id}}"><h3>{{event.nom}}</h3></a></p></li>
         {% endfor %}
     </ul>
 {% else %}
     <p>No hi ha cap event</p>
 {% endif %}
+</div>
 {% endblock %}
