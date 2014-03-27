@@ -1,19 +1,14 @@
-<!doctype html>
-<html>
-    <head>
-    <title>{{ titlehead }}</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript">
-    </script><script src="js/bootstrap.min.js"></script>
-    </head>
-<body>
+{% extends "layout.html" %}
+{% block content %}
     <h1>{{ pagetitle }}</h1>
     {% if user.username %}
     <p>Benvingut {{ user.username }}!
-    Aquí podrà gestionar els seus sobres!</p>
+    Aquí podrà veure les festes de catalunya!</p>
+    <a href="/festes"><h2>Accedeix a totes les festes</h2></a>
+    <a href="/user/{{ user.username}}"><h3>Accedeix als teus events</h3></a>
     {% else %}
-    <p>Benvingut usuari: Obligatori fer <a href="/login/">sign in</a> per poder accedir al contingut.</p>
+    <p>Obligatori fer <a href="/login/">sign in</a> per poder accedir al contingut.</p>
+    <p>O <a href="/register/">Registrat</a> en cas de ser un usuari nou.</p>
     {% endif %}
-    <footer>{{ footer}}</footer>
-</body>
-</html>
+    <footer>{{ footer }}</footer>
+{% endblock %}

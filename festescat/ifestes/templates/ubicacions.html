@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Totes les ubicacions</h1>
+{% if ubicacions %}
+    <ul>
+        {% for ubicacio in ubicacions %}
+        <li><a href="/ubicacions/{{ubicacio.id}}"><h3>{{ubicacio.adressa}}</h3></a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No hi ha ubicacions</p>
+{% endif %}
+{% endblock %}

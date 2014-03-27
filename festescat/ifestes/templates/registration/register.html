@@ -1,5 +1,11 @@
-<form method="POST" action="">
-    {% csrf_token %}
-    {{userform}}
-    <input type="submit">
-</form>
+{% extends "layout.html" %}
+{% block content %}
+    <h1>Registra un nou usuari</h1>
+    <form id='formulari' method="POST" action="">
+        {% csrf_token %}
+        <table>
+            {{userform}}
+        </table>
+        <input type="submit" value="Registrar">
+    </form>
+{% endblock %}

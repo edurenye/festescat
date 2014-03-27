@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+{% if ubicacio %}
+    <ul>
+        <li>
+        <p>Adressa: {{ ubicacio.adressa }}</p>
+        <p>Poble: {{ ubicacio.poble }}</p>
+        <p>Comarca: {{ ubicacio.comarca }}</p>
+        <p>Provincia: {{ ubicacio.provincia }}</p>
+        <p>Latitud: {{ ubicacio.latitude }}</p>
+        <p>Longitud: {{ ubicacio.longitude }}</p>
+        </li>
+    </ul>
+{% else %}
+    <p>No existeix la ubicació</p>
+{% endif %}
+{% endblock %}

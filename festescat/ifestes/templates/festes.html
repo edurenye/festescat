@@ -1,3 +1,5 @@
+{% extends "layout.html" %}
+{% block content %}
 <h1>Totes les festes</h1>
 {% if festes %}
     <ul>
@@ -6,5 +8,6 @@
         {% endfor %}
     </ul>
 {% else %}
-    <p>No Party</p>
+    <p>No hi ha cap festa</p>
 {% endif %}
+{% endblock %}
