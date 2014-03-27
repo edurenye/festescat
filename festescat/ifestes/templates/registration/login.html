@@ -1,8 +1,11 @@
 {% extends "layout.html" %}
 {% block content %}
     <h1>User Login</h1>
-    {% if form.has_errors %}
+    {% if form.has_errors or invalid%}
     <p>Error validant usuari.</p>
+    {% endif %}
+    {% if disabled %}
+    <p>L'usuari esta desactivat.</p>
     {% endif %}
     <form method="POST" action="">
         {% csrf_token %}

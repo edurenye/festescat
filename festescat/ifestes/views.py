@@ -43,13 +43,11 @@ def userpage(request, username):
 
 
 def entra(request):
-    template = get_template('registration/login.html')
     if request.method == 'POST':
         lf = LoginForm(request.POST, prefix='user')
         lf_username = request.POST['user-username']
         lf_password = request.POST['user-password']
         user = authenticate(username=lf_username, password=lf_password)
-        print(user)
         if user is not None:
             if user.is_active:
                 login(request, user)
@@ -64,15 +62,15 @@ def entra(request):
                 'disabled': False,
                 'invalid': True
                 })
-        output = template.render(variables)
-        return HttpResponse(output)
+        return render_to_response('registration/login.html',
+            dict(loginform=lf),
+            context_instance=RequestContext(request, variables))
     else:
         lf = LoginForm(prefix='user')
         variables = Context({
             'disabled': False,
             'invalid': False
             })
-        output = template.render(variables)
         return render_to_response('registration/login.html',
             dict(loginform=lf),
             context_instance=RequestContext(request, variables))
@@ -82,7 +80,14 @@ def register(request):
     if request.method == 'POST':
         uf = UserForm(request.POST, prefix='user')
         if uf.is_valid():
-            uf.save()
+            user_username = request.POST['user-username']
+            user_password = request.POST['user-password']
+            user = User.objects.create_user(user_username, user_password)
+            #user = uf.models
+            user.set_password(user_password)
+
+            # = User.set_password(uf.password)
+            user.save()
             return HttpResponseRedirect('/')
     else:
         uf = UserForm(prefix='user')
