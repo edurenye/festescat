@@ -6,6 +6,10 @@ festes.cat
 <body>
 <h1>FESTES.CAT</h1>
 
+Aplicacio desenvolupada per Eduard Renye i Victor Diaz
+
+FESTES - EVENTS - UBICACIONS
+
 <table>
 	<tr>
 	  <td><strong>Method</strong></td>
