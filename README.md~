@@ -61,7 +61,7 @@ festes.cat
 	  <td>Pagina d'usuari amb els events que te</td>
 	</tr>
 
-<p Tota aquesta informacio esta disponible ens els formats: JSON,HTML i XML </p>
+> Tota aquesta informacio esta disponible ens els formats: JSON,HTML i XML 
    
 </table>
 </body>
