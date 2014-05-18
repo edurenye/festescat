@@ -118,11 +118,13 @@ def festes(request, format='html'):
         festes = Festes.objects.all()
     except:
         raise Http404('No hi ha cap festa')
+    assis = user.assistencia.all()
     if(format == 'html'):
         variables = Context({
             'festes': festes,
             'titlehead': 'Gestor de Festes',
             'pagetitle': 'Festes',
+            'assistencies': assis
             })
         return render(request, "festes.html", variables)
     else:
