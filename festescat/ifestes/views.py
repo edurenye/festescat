@@ -118,7 +118,10 @@ def festes(request, format='html'):
         festes = Festes.objects.all()
     except:
         raise Http404('No hi ha cap festa')
-    assis = user.assistencia.all()
+    if request.user.is_authenticated():
+        assis = request.user.assistencia.all()
+    else:
+        assis = NULL
     if(format == 'html'):
         variables = Context({
             'festes': festes,
