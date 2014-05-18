@@ -14,11 +14,10 @@
         {% for festa in festes %}
         <li><p>
             <a href="/festes/{{festa.id}}"><h3>{{festa.nom}}</h3></a>
-            {% if festa in assis % }
+            {%if festa in assis %}
             <button class="btn btn-primary asis-button">
                 <span class="glyphicon glyphicon-ok"> Participa-hi</span>
             </button>
-            {% else %}
             {% endif %}
         </p></li>
         {% endfor %}
