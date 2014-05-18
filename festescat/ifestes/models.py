@@ -40,17 +40,17 @@ class Events(models.Model):
         return self.nom
 
 
-class Organitzadors(User):
-    empresa = models.CharField(max_length=30)
-    festa = models.ManyToManyField(Festes, blank=True)
-    event = models.ManyToManyField(Events, blank=True)
+class Usuaris(User):
+    assistencia = models.ManyToManyField(Events)
 
     def __unicode__(self):
         return self.username
 
 
-class Usuaris(User):
-    assistencia = models.ManyToManyField(Events)
+class Organitzadors(Usuaris):
+    empresa = models.CharField(max_length=30)
+    festa = models.ManyToManyField(Festes, blank=True)
+    event = models.ManyToManyField(Events, blank=True)
 
     def __unicode__(self):
         return self.username
