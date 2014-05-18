@@ -26,22 +26,22 @@
               <a href="/">Index</a>
             </li>
             <li>
-              <a href="/festes">Festes</a>
+              <a href="/festes/">Festes</a>
             </li>
             <li>
-              <a href="/ubicacions">Ubicacions</a>
+              <a href="/ubicacions/">Ubicacions</a>
             </li>
             <li>
-              <a href="/events">Events</a>
+              <a href="/events/">Events</a>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             {% if user.username %}
-                <li><a href="/user/{{user.username}}" onclick="_gaq.push(['_trackEvent', 'Navbar', 'Community links', 'Expo']);">{{user.username}}</a></li>
-                <li><a href="/logout" onclick="_gaq.push(['_trackEvent', 'Navbar', 'Community links', 'Blog']);">LOGOUT</a></li>
+                <li><a href="/user/{{user.username}}/" onclick="_gaq.push(['_trackEvent', 'Navbar', 'Community links', 'Expo']);">{{user.username}}</a></li>
+                <li><a href="/logout/" onclick="_gaq.push(['_trackEvent', 'Navbar', 'Community links', 'Blog']);">LOGOUT</a></li>
             {% else %}
-                <li><a href="/register" onclick="_gaq.push(['_trackEvent', 'Navbar', 'Community links', 'Expo']);">REGISTRAT</a></li>
-                <li><a href="/login" onclick="_gaq.push(['_trackEvent', 'Navbar', 'Community links', 'Blog']);">LOGIN</a></li>
+                <li><a href="/register/" onclick="_gaq.push(['_trackEvent', 'Navbar', 'Community links', 'Expo']);">REGISTRAT</a></li>
+                <li><a href="/login/" onclick="_gaq.push(['_trackEvent', 'Navbar', 'Community links', 'Blog']);">LOGIN</a></li>
             {% endif %}
           </ul>
         </nav>
