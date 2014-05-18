@@ -121,6 +121,8 @@ def festes(request, format='html'):
         raise Http404('No hi ha cap festa')
     if request.user.is_authenticated() and isinstance(request.user, Organitzadors):
         assis = request.user.assistencia.all()
+    else:
+        assis = null
     if(format == 'html'):
         variables = Context({
             'festes': festes,
