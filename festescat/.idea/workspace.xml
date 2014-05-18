@@ -46,8 +46,8 @@
       <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ifestes/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.75250834" vertical-offset="1350" max-vertical-offset="3435">
-              <caret line="120" column="17" selection-start-line="120" selection-start-column="17" selection-end-line="120" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.6020067" vertical-offset="1440" max-vertical-offset="3480">
+              <caret line="120" column="38" selection-start-line="120" selection-start-column="38" selection-end-line="120" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -86,8 +86,8 @@
         <option value="$PROJECT_DIR$/ifestes/templates/layout.html" />
         <option value="$PROJECT_DIR$/ifestes/models.py" />
         <option value="$PROJECT_DIR$/ifestes/static/css/style.css" />
-        <option value="$PROJECT_DIR$/ifestes/views.py" />
         <option value="$PROJECT_DIR$/ifestes/templates/festes.html" />
+        <option value="$PROJECT_DIR$/ifestes/views.py" />
       </list>
     </option>
   </component>
@@ -418,8 +418,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ifestes/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.75250834" vertical-offset="1350" max-vertical-offset="3435">
-          <caret line="120" column="17" selection-start-line="120" selection-start-column="17" selection-end-line="120" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.6020067" vertical-offset="1440" max-vertical-offset="3480">
+          <caret line="120" column="38" selection-start-line="120" selection-start-column="38" selection-end-line="120" selection-end-column="38" />
           <folding />
         </state>
       </provider>

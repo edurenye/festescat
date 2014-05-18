@@ -114,19 +114,19 @@ def tanca(request):
 
 
 def festes(request, format='html'):
+    organitzadors = Organitzadors.objects.all()
     try:
         festes = Festes.objects.all()
     except:
         raise Http404('No hi ha cap festa')
-    if request.user.is_authenticated():
+    if request.user.is_authenticated() and isinstance(request.user, Organitzadors):
         assis = request.user.assistencia.all()
-    else:
-        assis = NULL
     if(format == 'html'):
         variables = Context({
             'festes': festes,
             'titlehead': 'Gestor de Festes',
             'pagetitle': 'Festes',
+            'organitzadors': organitzadors,
             'assistencies': assis
             })
         return render(request, "festes.html", variables)
