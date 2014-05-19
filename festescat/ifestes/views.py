@@ -311,6 +311,34 @@ def ubicacio(request, idUbi, format='html'):
         return formate(format, Ubicacions.objects.filter(id=idUbi))
 
 
+def ubi_update(request, idUbi):
+    if request.method == 'POST':
+        nuf = NewUbiForm(request.POST)
+        u_latitude = request.POST['latitude']
+        u_longitude = request.POST['longitude']
+        u_provincia = request.POST['provincia']
+        u_comarca = request.POST['comarca']
+        u_poble = request.POST['poble']
+        u_adressa = request.POST['adressa']
+        ubi = Ubicacions(latitude=u_latitude, longitude=u_longitude, provincia=u_provincia, comarca=u_comarca,
+            poble=u_poble, adressa=u_adressa)
+        ubi.save()
+        ubi_id = 'ubicacions/' + str(ubi.id) + '.html'
+        return HttpResponseRedirect(ubi_id)
+    elif request.method == 'GET':
+        variables = Context({
+            'ubicacio': ubicacio,
+            'titlehead': 'Detalls de la Ubicacio',
+            'pagetitle': ubicacio.adressa,
+        })
+        nff = NewFestaForm()
+        return render_to_response('ubicacio.html',
+            dict(newfestaform=nff),
+            context_instance=RequestContext(request, variables))
+    else:
+            return Http405()
+
+
 def events(request, format='html'):
     organitzadors = Organitzadors.objects.all()
     org = False
