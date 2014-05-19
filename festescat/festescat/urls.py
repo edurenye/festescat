@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, include, url
+from django.views.generic import UpdateView
 from ifestes.views import *
 
 # Uncomment the next two lines to enable the admin:
