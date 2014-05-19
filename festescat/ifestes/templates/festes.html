@@ -12,21 +12,30 @@
 {% if festes %}
     <ul>
         {% for festa in festes %}
+	<div>
         <li><p>
             <a href="/festes/{{festa.id}}/"><h3>{{festa.nom}}</h3></a>
-	{% for as in assis %}
-		<h3>{{as.nom}}</h3>
-	{% endfor %}
             {%if festa not in assis %}
             <button class="btn btn-primary asis-button">
                 <span class="glyphicon glyphicon-ok"> Participa-hi</span>
             </button>
             {% endif %}
         </p></li>
+	</div>
         {% endfor %}
     </ul>
 {% else %}
     <p>No hi ha cap festa</p>
+{% endif %}
+</div>
+<div class="col-md-4">
+{% if user %}
+    <h1>Festes a les que assisteixes</h1>
+    <ul>
+    {% for as in assis %}
+        <li><p><a href="/festes/{{festa.id}}/"><h3>{{festa.nom}}</h3></a></p></li>
+    {% endfor %}
+    </ul>
 {% endif %}
 </div>
 {% endblock %}
