@@ -211,7 +211,6 @@ def festa(request, idFesta, format='html'):
             variables = Context({
                 'titlehead': 'Gestor de Festes',
                 'pagetitle': 'Festes',
-                'assis': assis,
                 'org': org,
             })
             nff = NewFestaForm()
