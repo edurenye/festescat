@@ -137,9 +137,16 @@ def festes(request, format='html'):
         nff = NewFestaForm(request.POST)
         user = request.user
         org = Organitzadors.objects.get(username=user.username)
-        festa = Festes(nff)
+        f_nom = request.POST['nom']
+        f_data_inici = request.POST['data_inici']
+        f_data_fi = request.POST['data_fi']
+        f_categoria = request.POST['categoria']
+        f_descripcio = request.POST['descripcio']
+        f_localitat = request.POST['localitat']
+        festa = Festes(nom=f_nom, data_inici=f_data_inici, data_fi=f_data_fi, categoria=f_categoria,
+            descripcio=f_descripcio, localitat=f_localitat)
         festa.save()
-        org.festa.add()
+        org.festa.add(festa)
         festa_id = 'festes/' + festa.festes_ptr + '.html'
         return HttpResponseRedirect('festa_id')
     else:
