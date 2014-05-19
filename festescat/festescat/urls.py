@@ -23,7 +23,7 @@ urlpatterns = patterns('',
 
     url(r'^ubicacions/(\d+)/edit/$', UpdateView.as_view(
         model = Ubicacions,
-        template_name = ubicacio.html,
+        template_name = 'ubicacio.html',
         form_class = NewUbiForm), name='ubicacio_edit'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
