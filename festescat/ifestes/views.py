@@ -115,9 +115,9 @@ def tanca(request):
 
 def festes(request, format='html'):
     organitzadors = Organitzadors.objects.all()
-    org = false
+    org = False
     if request.user in organitzadors:
-        org = true
+        org = True
     try:
         festes = Festes.objects.all()
     except:
@@ -162,9 +162,9 @@ def festa(request, idFesta, format='html'):
 
 def ubicacions(request, format='html'):
     organitzadors = Organitzadors.objects.all()
-    org = false
+    org = False
     if request.user in organitzadors:
-        org = true
+        org = True
     try:
         ubicacions = Ubicacions.objects.all()
     except:
@@ -182,9 +182,9 @@ def ubicacions(request, format='html'):
 
 def ubicacio(request, idUbi, format='html'):
     organitzadors = Organitzadors.objects.all()
-    org = false
+    org = False
     if request.user in organitzadors:
-        org = true
+        org = True
     try:
         ubicacio = Ubicacions.objects.get(id=idUbi)
     except:
@@ -202,9 +202,9 @@ def ubicacio(request, idUbi, format='html'):
 
 def events(request, format='html'):
     organitzadors = Organitzadors.objects.all()
-    org = false
+    org = False
     if request.user in organitzadors:
-        org = true
+        org = True
     try:
         events = Events.objects.all()
     except:
@@ -222,9 +222,9 @@ def events(request, format='html'):
 
 def event(request, idEvent, format='html'):
     organitzadors = Organitzadors.objects.all()
-    org = false
+    org = False
     if request.user in organitzadors:
-        org = true
+        org = True
     try:
         event = Events.objects.get(id=idEvent)
     except:
