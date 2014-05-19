@@ -21,7 +21,7 @@ urlpatterns = patterns('',
     url(r'^events/$', events, name='events'),
     url(r'^events/(\d+)/$', event),
 
-    url(r'^ubicacions/(\d+)/edit/$', APIUbicacioDetail.as_view(),name='ubi-detail'
+    url(r'^ubicacions/(\d+)/edit/$', APIUbicacioDetail.as_view(),name='ubi-detail'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
