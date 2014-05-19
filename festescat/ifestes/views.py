@@ -183,25 +183,29 @@ def festes(request, format='html'):
 
 
 def festa(request, idFesta, format='html'):
-    organitzadors = Organitzadors.objects.all()
-    org = False
-    if request.user in organitzadors:
-        org = True
-    try:
-        la_festa = Festes.objects.get(id=idFesta)
-    except:
-        raise Http404('No existeix aquesta festa')
-    if(format == 'html'):
-        events = Events.objects.filter(festa=la_festa)
-        variables = Context({
-            'festa': la_festa,
-            'events': events,
-            'titlehead': 'Detalls de la Festa',
-            'pagetitle': la_festa.nom,
-            })
-        return render(request, "festa.html", variables)
+    if request.method == 'DELETE':
+        festa = Festes.objects.get(id=idFesta)
+        festa.delete()
     else:
-        return formate(format, Festes.objects.filter(id=idFesta))
+        organitzadors = Organitzadors.objects.all()
+        org = False
+        if request.user in organitzadors:
+            org = True
+        try:
+            la_festa = Festes.objects.get(id=idFesta)
+        except:
+            raise Http404('No existeix aquesta festa')
+        if(format == 'html'):
+            events = Events.objects.filter(festa=la_festa)
+            variables = Context({
+                'festa': la_festa,
+                'events': events,
+                'titlehead': 'Detalls de la Festa',
+                'pagetitle': la_festa.nom,
+            })
+            return render(request, "festa.html", variables)
+        else:
+            return formate(format, Festes.objects.filter(id=idFesta))
 
 
 def ubicacions(request, format='html'):

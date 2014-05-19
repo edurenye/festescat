@@ -4,6 +4,11 @@
 <h1>Festa</h1>
 {% if festa %}
     <ul>
+        <form id='formulari' method="DELETE" action="">
+            <button class="btn btn-primary" type="submit">
+                <span class="glyphicon glyphicon-remove"> Elimina la festa</span>
+            </button>
+        </form>
         <p>Nom: {{ festa.nom }}</p>
         <p>Data d'inici: {{ festa.data_inici }}</p>
         <p>Data de finalització: {{ festa.data_fi }}</p>
