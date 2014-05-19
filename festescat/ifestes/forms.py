@@ -90,3 +90,5 @@ class NewUbiForm(ModelForm):
 
     class Meta:
         model = Ubicacions
+
+

@@ -360,3 +360,19 @@ def formate(format, entity):
         return HttpResponse(data, mimetype='application/xml')
     else:
         raise Http404('Format no valid')
+
+
+from rest_framework import generics
+from serializers import UbicacioSerializer
+
+'''
+class IsOwnerOrReadOnly(Permissions.BasePermission):
+    def has_object_permission(self,request,view,obj):
+        if request.method in permission.SAFE_METHODS:
+            return True
+        return obj.user == request.user'''
+
+class APIUbicacioDetail(generics.RetrieveUpdateDestroyAPIView):
+    #permission_classes = (IsOwnerOrReadOnly,)
+    model = Ubicacions
+    serializer_class = CiutatSerializer
