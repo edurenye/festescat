@@ -42,16 +42,16 @@
     <p>No hi ha cap festa</p>
 {% endif %}
 </div>
-{% comment %}
 <div class="col-md-6">
 {% if user %}
-    <h1>Festes a les que assisteixes</h1>
-    <ul>
-    {% for as in assis %}
-        <li><p><a href="/festes/{{festa.id}}/"><h3>{{festa.nom}}</h3></a></p></li>
-    {% endfor %}
-    </ul>
+    <h1>Crea una nova festa</h1>
+    <form id='formulari' method="POST" action="">
+        {% csrf_token %}
+        <table>
+            {{newfestaform}}
+        </table>
+        <input type="submit" value="Crea">
+    </form>
 {% endif %}
 </div>
-{% endcomment %}
 {% endblock %}

@@ -66,3 +66,15 @@ class OrgForm(ModelForm):
     class Meta:
         model = Organitzadors
         fields = ['empresa']
+
+
+class NewFestaForm(ModelForm):
+    nom = forms.CharField(label="Nom de la festa")
+    data_inici = forms.DateTimeField(label="Data d'inici de la festa)
+    data_fi = forms.DateTimeField(label="Data final de la festa)
+    categoria = forms.CharField(label="Categoria")
+    descripcio = forms.TextField(label="Descripció")
+    localitat = forms.CharField(label="Localitat")
+
+    class Meta:
+        model = Festes

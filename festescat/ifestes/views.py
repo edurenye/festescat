@@ -133,33 +133,46 @@ def tanca(request):
 
 
 def festes(request, format='html'):
-    organitzadors = Organitzadors.objects.all()
-    org = False
-    if request.user in organitzadors:
-        print "hola"
-        org = True
-    try:
-        festes = Festes.objects.all()
-    except:
-        raise Http404('No hi ha cap festa')
-    if request.user.is_authenticated():
-        username = request.user.username
-        user = Usuaris.objects.get(username=username)
-        assis = user.assistencia.all()
+    if request.method == 'POST':
+        nff = NewFestaForm(request.POST)
+        user = request.user
+        org = Organitzadors.objects.get(username=user.username)
+        festa = Festes(nff)
+        festa.save()
+        org.festa.add()
+        festa_id = 'festes/'festa.festes_ptr'.html'
+        return HttpResponseRedirect('festa_id')
+    else:
+        organitzadors = Organitzadors.objects.all()
+        org = False
+        if request.user in organitzadors:
+            print "hola"
+            org = True
+        try:
+            festes = Festes.objects.all()
+        except:
+            raise Http404('No hi ha cap festa')
+        if request.user.is_authenticated():
+            username = request.user.username
+            user = Usuaris.objects.get(username=username)
+            assis = user.assistencia.all()
 
-    else:
-        assis = []
-    if(format == 'html'):
-        variables = Context({
-            'festes': festes,
-            'titlehead': 'Gestor de Festes',
-            'pagetitle': 'Festes',
-            'assis': assis,
-            'org': org
-            })
-        return render(request, "festes.html", variables)
-    else:
-        return formate(format, festes)
+        else:
+            assis = []
+        if(format == 'html'):
+            variables = Context({
+                'festes': festes,
+                'titlehead': 'Gestor de Festes',
+                'pagetitle': 'Festes',
+                'assis': assis,
+                'org': org,
+                })
+            nff = NewFestForm()
+            return render_to_response('festes.html',
+                dict(newfestaform=nff),
+                context_instance=RequestContext(request, variables)))
+        else:
+            return formate(format, festes)
 
 
 def festa(request, idFesta, format='html'):
