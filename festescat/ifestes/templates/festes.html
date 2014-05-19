@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-<div id="llistaFestes" class="col-md-8">
+<div id="LlistaElems" class="col-md-8">
 <h1>Totes les festes</h1>
     {% comment %}
 {% if org %}
@@ -37,7 +37,7 @@
     <p>No hi ha cap festa</p>
 {% endif %}
 </div>
-<div id="newFesta" class="col-md-6 hidden">
+<div id="AddForm" class="col-md-6 hidden">
 {% if user %}
     <h1>Crea una nova festa</h1>
     <form id='formulari' method="POST" action="">

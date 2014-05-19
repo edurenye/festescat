@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="col-md-8">
+<div id="LlistaElems" class="col-md-8">
     <h1>Totes les ubicacions</h1>
     <div class="new-button">
         <button class="btn btn-primary" type="button" onclick="showAddForm()">
@@ -17,7 +17,7 @@
         <p>No hi ha ubicacions</p>
     {% endif %}
 </div>
-<div id="newUbi" class="col-md-6 hidden">
+<div id="AddForm" class="col-md-6 hidden">
     {% if user %}
     <h1>Crea una nova Ubicació</h1>
     <form id='formulari' method="POST" action="">
