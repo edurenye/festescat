@@ -7,8 +7,8 @@
         <p>Nom: {{ event.nom }}</p>
         <p>Tipus: {{ event.tipus }}</p>
         <p>Descripcio: {{ event.descripcio }}</p>
-        <a href="/festes/{{event.festa.id}}/"><p>Festa: {{ event.festa.nom}}</p></a>
-        <a href="/ubicacions/{{event.ubicacio.id}}/"><p>Ubicació: {{ event.ubicacio.adressa }}</p></a>
+        <a href="/festes/{{event.festa.id}}"><p>Festa: {{ event.festa.nom}}</p></a>
+        <a href="/ubicacions/{{event.ubicacio.id}}"><p>Ubicació: {{ event.ubicacio.adressa }}</p></a>
         <p>Data: {{ event.data }}</p>
     </ul>
 {% else %}

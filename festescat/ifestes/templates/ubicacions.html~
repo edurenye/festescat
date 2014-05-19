@@ -5,7 +5,7 @@
 {% if ubicacions %}
     <ul>
         {% for ubicacio in ubicacions %}
-        <li><p><a href="/ubicacions/{{ubicacio.id}}/"><h3>{{ubicacio.adressa}}</h3></a></p></li>
+        <li><p><a href="/ubicacions/{{ubicacio.id}}"><h3>{{ubicacio.adressa}}</h3></a></p></li>
         {% endfor %}
     </ul>
 {% else %}

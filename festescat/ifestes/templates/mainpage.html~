@@ -5,8 +5,8 @@
     {% if user.username %}
     <p>Benvingut {{ user.username }}!
     Aquí podrà veure les festes de catalunya!</p>
-    <a href="/festes/"><h2>Accedeix a totes les festes</h2></a>
-    <a href="/user/{{ user.username}}/"><h3>Accedeix als teus events</h3></a>
+    <a href="/festes"><h2>Accedeix a totes les festes</h2></a>
+    <a href="/user/{{ user.username}}"><h3>Accedeix als teus events</h3></a>
     {% else %}
     <p>Obligatori fer <a href="/login/">sign in</a> per poder accedir al contingut.</p>
     <p>O <a href="/register/">Registrat</a> en cas de ser un usuari nou.</p>

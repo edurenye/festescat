@@ -14,7 +14,7 @@
             <h2>Events</h2>
             <ul>
             {% for event in events %}
-                <li><p><a href="/events/{{event.id}}/"><h3>{{event.nom}}</h3></a></p></li>
+                <li><p><a href="/events/{{event.id}}"><h3>{{event.nom}}</h3></a></p></li>
             {% endfor %}
             </ul>
         {% else %}
