@@ -325,8 +325,8 @@ def ubi_update(request, idUbi):
             'pagetitle': ubi.adressa,
         })
         nuf = NewUbiForm()
-        return render_to_response('ubicacio.html',
-            dict(newubiform=nuf),
+        return render_to_response('form.html',
+            dict(form=nuf),
             context_instance=RequestContext(request, variables))
     else:
             return Http405()
