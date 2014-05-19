@@ -115,21 +115,22 @@ def tanca(request):
 
 def festes(request, format='html'):
     organitzadors = Organitzadors.objects.all()
+    org = false
+    if request.user in organitzadors:
+        org = true
     try:
         festes = Festes.objects.all()
     except:
         raise Http404('No hi ha cap festa')
-    if request.user.is_authenticated() and isinstance(request.user, Organitzadors):
+    if request.user.is_authenticated():
         assis = request.user.assistencia.all()
     else:
         assis = []
     if(format == 'html'):
         variables = Context({
-	    'user': request.user,
             'festes': festes,
             'titlehead': 'Gestor de Festes',
             'pagetitle': 'Festes',
-            'organitzadors': organitzadors,
             'assis': assis
             })
         return render(request, "festes.html", variables)
@@ -138,6 +139,10 @@ def festes(request, format='html'):
 
 
 def festa(request, idFesta, format='html'):
+    organitzadors = Organitzadors.objects.all()
+    org = false
+    if request.user in organitzadors:
+        org = true
     try:
         la_festa = Festes.objects.get(id=idFesta)
     except:
@@ -156,6 +161,10 @@ def festa(request, idFesta, format='html'):
 
 
 def ubicacions(request, format='html'):
+    organitzadors = Organitzadors.objects.all()
+    org = false
+    if request.user in organitzadors:
+        org = true
     try:
         ubicacions = Ubicacions.objects.all()
     except:
@@ -172,6 +181,10 @@ def ubicacions(request, format='html'):
 
 
 def ubicacio(request, idUbi, format='html'):
+    organitzadors = Organitzadors.objects.all()
+    org = false
+    if request.user in organitzadors:
+        org = true
     try:
         ubicacio = Ubicacions.objects.get(id=idUbi)
     except:
@@ -188,6 +201,10 @@ def ubicacio(request, idUbi, format='html'):
 
 
 def events(request, format='html'):
+    organitzadors = Organitzadors.objects.all()
+    org = false
+    if request.user in organitzadors:
+        org = true
     try:
         events = Events.objects.all()
     except:
@@ -204,6 +221,10 @@ def events(request, format='html'):
 
 
 def event(request, idEvent, format='html'):
+    organitzadors = Organitzadors.objects.all()
+    org = false
+    if request.user in organitzadors:
+        org = true
     try:
         event = Events.objects.get(id=idEvent)
     except:

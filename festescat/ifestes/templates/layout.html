@@ -37,11 +37,22 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             {% if user.username %}
-                <li><a href="/user/{{user.username}}/" onclick="_gaq.push(['_trackEvent', 'Navbar', 'Community links', 'Expo']);">{{user.username}}</a></li>
-                <li><a href="/logout/" onclick="_gaq.push(['_trackEvent', 'Navbar', 'Community links', 'Blog']);">LOGOUT</a></li>
+                {% if org %}
+                <li><div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">{{user.username}} <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/user/{{user.username}}/">Perfil</a></li>
+                        <li><a href="/user/{{user.username}}/org/">Organitzador</a></li>
+                    </ul>
+                </div></li>
+                {% else %}
+                <li><a href="/user/{{user.username}}/">{{user.username}}</a></li>
+                {% endif %}
+                <li><a href="/logout/">LOGOUT</a></li>
             {% else %}
-                <li><a href="/register/" onclick="_gaq.push(['_trackEvent', 'Navbar', 'Community links', 'Expo']);">REGISTRAT</a></li>
-                <li><a href="/login/" onclick="_gaq.push(['_trackEvent', 'Navbar', 'Community links', 'Blog']);">LOGIN</a></li>
+                <li><a href="/register/">REGISTRAT</a></li>
+                <li><a href="/login/">LOGIN</a></li>
             {% endif %}
           </ul>
         </nav>

@@ -2,7 +2,7 @@
 {% block content %}
 <div class="col-md-6">
 <h1>Totes les festes</h1>
-{% if organitzadors.username %}
+{% if org %}
 <div class="new-button">
     <button class="btn btn-primary">
         <span class="glyphicon glyphicon-plus"> Nova Festa</span>
@@ -12,6 +12,7 @@
 {% if festes %}
     <ul>
         {% for festa in festes %}
+	<div class="container-fluid">
         <div class="row">
             <div class="col-md-8">
                 <li><p><a href="/festes/{{festa.id}}/"><h3>{{festa.nom}}</h3></a></p></li>
@@ -24,6 +25,7 @@
             </div>
             {% endif %}
 	    </div>
+        </div>
         </div>
         {% endfor %}
     </ul>
