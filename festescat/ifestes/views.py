@@ -186,6 +186,7 @@ def festa(request, idFesta, format='html'):
     if request.method == 'DELETE':
         festa = Festes.objects.get(id=idFesta)
         festa.delete()
+        festa.save()
     else:
         organitzadors = Organitzadors.objects.all()
         org = False
