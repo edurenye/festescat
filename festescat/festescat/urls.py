@@ -20,6 +20,11 @@ urlpatterns = patterns('',
     url(r'^events/$', events, name='events'),
     url(r'^events/(\d+)/$', event),
 
+    url(r'^ubicacions/(\d+)/edit/$', UpdateView.as_view(
+        model = Ubicacions,
+        template_name = ubicacio.html,
+        form_class = NewUbiForm), name='ubicacio_edit'),
+
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
