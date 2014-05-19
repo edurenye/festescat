@@ -186,7 +186,7 @@ def festa(request, idFesta, format='html'):
         festa = None
     if request.method == 'PUT':
         if festa == None:
-            nff = NewFestaForm(request.POST)
+            nff = NewFestaForm(request.PUT)
             user = request.user
             org = Organitzadors.objects.get(username=user.username)
             f_nom = request.POST['nom']
@@ -202,7 +202,16 @@ def festa(request, idFesta, format='html'):
             festa_id = 'festes/' + str(festa.id) + '.html'
             return HttpResponseRedirect(festa_id)
         else:
-            return render_to_response()
+            nff = NewFestaForm(request.PUT, instance=festa)
+            festa.save()
+            events = Events.objects.filter(festa=festa)
+            variables = Context({
+                'festa': festa,
+                'events': events,
+                'titlehead': 'Detalls de la Festa',
+                'pagetitle': festa.nom,
+            })
+            return render(request, "festa.html", variables)
     elif request.method == 'DELETE':
         festa.delete()
         festa.save()
