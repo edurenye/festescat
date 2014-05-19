@@ -126,6 +126,7 @@ def festes(request, format='html'):
     print assis
     if(format == 'html'):
         variables = Context({
+	    'user': request.user,
             'festes': festes,
             'titlehead': 'Gestor de Festes',
             'pagetitle': 'Festes',

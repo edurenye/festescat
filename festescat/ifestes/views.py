@@ -123,7 +123,6 @@ def festes(request, format='html'):
         assis = request.user.assistencia.all()
     else:
         assis = []
-    print assis
     if(format == 'html'):
         variables = Context({
 	    'user': request.user,
