@@ -3,6 +3,7 @@
 <script>
     function showAddForm() {
         document.getElementById("llistaFestes").setAttribute("class","col-md-6");
+        document.getElementById("newFesta").setAttribute("class","col-md-6");
     }
 </script>
 <div id="llistaFestes" class="col-md-8">
@@ -42,7 +43,7 @@
     <p>No hi ha cap festa</p>
 {% endif %}
 </div>
-<div class="col-md-6">
+<div id="newFesta" class="col-md-6 hidden">
 {% if user %}
     <h1>Crea una nova festa</h1>
     <form id='formulari' method="POST" action="">
