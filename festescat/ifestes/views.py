@@ -140,9 +140,9 @@ def festes(request, format='html'):
 
 def festa(request, idFesta, format='html'):
     organitzadors = Organitzadors.objects.all()
-    org = false
+    org = False
     if request.user in organitzadors:
-        org = true
+        org = True
     try:
         la_festa = Festes.objects.get(id=idFesta)
     except:

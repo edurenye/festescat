@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="col-md-6">
+<div class="col-md-8">
 <h1>Totes les festes</h1>
 {% if org %}
 <div class="new-button">
@@ -33,6 +33,7 @@
     <p>No hi ha cap festa</p>
 {% endif %}
 </div>
+{% comment %}
 <div class="col-md-6">
 {% if user %}
     <h1>Festes a les que assisteixes</h1>
@@ -43,4 +44,5 @@
     </ul>
 {% endif %}
 </div>
+{% endcomment %}
 {% endblock %}
