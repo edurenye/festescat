@@ -153,7 +153,8 @@ def festes(request, format='html'):
             'festes': festes,
             'titlehead': 'Gestor de Festes',
             'pagetitle': 'Festes',
-            'assis': assis
+            'assis': assis,
+            'org', org
             })
         return render(request, "festes.html", variables)
     else:
