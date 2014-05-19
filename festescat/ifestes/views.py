@@ -136,6 +136,7 @@ def festes(request, format='html'):
     organitzadors = Organitzadors.objects.all()
     org = False
     if request.user in organitzadors:
+        print "hola"
         org = True
     try:
         festes = Festes.objects.all()
