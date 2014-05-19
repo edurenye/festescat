@@ -140,7 +140,7 @@ def festes(request, format='html'):
         festa = Festes(nff)
         festa.save()
         org.festa.add()
-        festa_id = 'festes/'festa.festes_ptr'.html'
+        festa_id = 'festes/' + festa.festes_ptr + '.html'
         return HttpResponseRedirect('festa_id')
     else:
         organitzadors = Organitzadors.objects.all()
