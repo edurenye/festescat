@@ -149,21 +149,16 @@ def festes(request, format='html'):
         org.festa.add(festa)
         festa_id = 'festes/' + str(festa.id) + '.html'
         return HttpResponseRedirect(festa_id)
-    else:
+    elif request.method == 'GET'::
         organitzadors = Organitzadors.objects.all()
         org = False
         if request.user in organitzadors:
-            print "hola"
             org = True
-        try:
-            festes = Festes.objects.all()
-        except:
-            raise Http404('No hi ha cap festa')
+        festes = Festes.objects.all()
         if request.user.is_authenticated():
             username = request.user.username
             user = Usuaris.objects.get(username=username)
             assis = user.assistencia.all()
-
         else:
             assis = []
         if(format == 'html'):
@@ -180,33 +175,65 @@ def festes(request, format='html'):
                 context_instance=RequestContext(request, variables))
         else:
             return formate(format, festes)
+    else:
+        return Http405()
 
 
 def festa(request, idFesta, format='html'):
-    if request.method == 'DELETE':
-        festa = Festes.objects.get(id=idFesta)
+    festa = Festes.objects.get(id=idFesta)
+    if request.method == 'PUT':
+        if festa == None:
+            nff = NewFestaForm(request.POST)
+            user = request.user
+            org = Organitzadors.objects.get(username=user.username)
+            f_nom = request.POST['nom']
+            f_data_inici = request.POST['data_inici']
+            f_data_fi = request.POST['data_fi']
+            f_categoria = request.POST['categoria']
+            f_descripcio = request.POST['descripcio']
+            f_localitat = request.POST['localitat']
+            festa = Festes(nom=f_nom, data_inici=f_data_inici, data_fi=f_data_fi, categoria=f_categoria,
+                descripcio=f_descripcio, localitat=f_localitat)
+            festa.save()
+            org.festa.add(festa)
+            festa_id = 'festes/' + str(festa.id) + '.html'
+            return HttpResponseRedirect(festa_id)
+        else:
+            return render_to_response()
+    elif request.method == 'DELETE':
         festa.delete()
         festa.save()
-    else:
-        organitzadors = Organitzadors.objects.all()
-        org = False
-        if request.user in organitzadors:
-            org = True
-        try:
-            la_festa = Festes.objects.get(id=idFesta)
-        except:
-            raise Http404('No existeix aquesta festa')
-        if(format == 'html'):
-            events = Events.objects.filter(festa=la_festa)
+    elif request.method == 'GET':
+        if festa == None:
             variables = Context({
-                'festa': la_festa,
-                'events': events,
-                'titlehead': 'Detalls de la Festa',
-                'pagetitle': la_festa.nom,
+                'titlehead': 'Gestor de Festes',
+                'pagetitle': 'Festes',
+                'assis': assis,
+                'org': org,
             })
-            return render(request, "festa.html", variables)
+            nff = NewFestaForm()
+            return render_to_response('festes.html',
+                dict(newfestaform=nff),
+                context_instance=RequestContext(request, variables))
         else:
-            return formate(format, Festes.objects.filter(id=idFesta))
+            organitzadors = Organitzadors.objects.all()
+            org = False
+            if request.user in organitzadors:
+                org = True
+            la_festa = Festes.objects.get(id=idFesta)
+            if(format == 'html'):
+                events = Events.objects.filter(festa=festa)
+                variables = Context({
+                    'festa': festa,
+                    'events': events,
+                    'titlehead': 'Detalls de la Festa',
+                    'pagetitle': festa.nom,
+                })
+                return render(request, "festa.html", variables)
+            else:
+                return formate(format, Festes.objects.filter(id=idFesta))
+    else:
+        return Http405()
 
 
 def ubicacions(request, format='html'):
