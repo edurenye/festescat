@@ -8,6 +8,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^$', mainpage, name='home'),
     url(r'^user/(\w+)/$', userpage),
+    url(r'^user/(\w+)/org/$', org),
     #url(r'^login/$', 'django.contrib.auth.views.login'),
     url(r'^login/$', entra),
     url(r'^logout/$', tanca),

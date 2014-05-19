@@ -58,3 +58,11 @@ class LoginForm(ModelForm):
         model = Usuaris
         exclude = ['user']
         fields = ['username', 'password']
+
+
+class OrgForm(ModelForm):
+    empresa = forms.CharField(label="Introdueix el nom de la empresa")
+
+    class Meta:
+        model = Organitzadors
+        fields = ['empresa']

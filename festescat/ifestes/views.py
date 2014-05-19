@@ -51,6 +51,24 @@ def userpage(request, username):
             context_instance=RequestContext(request, variables))
 
 
+def org(request, username):
+    if request.method == 'POST':
+        of = OrgForm(request.POST, prefix='org')
+        user = Usuaris.objects.get(username=username)
+        empresa = request.POST['org-empresa']
+        org = Organitzadors(usuaris_ptr=user, empresa=empresa)
+        org.save()
+    else:
+        variables = Context({
+            'user': request.user,
+            'username': username,
+            })
+        of = OrgForm(prefix='org')
+        return render_to_response('org.html',
+            dict(orgform=of),
+            context_instance=RequestContext(request, variables))
+
+
 def entra(request):
     if request.method == 'POST':
         lf = LoginForm(request.POST, prefix='user')
