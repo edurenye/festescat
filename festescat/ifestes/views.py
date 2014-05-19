@@ -170,7 +170,7 @@ def festes(request, format='html'):
             nff = NewFestForm()
             return render_to_response('festes.html',
                 dict(newfestaform=nff),
-                context_instance=RequestContext(request, variables)))
+                context_instance=RequestContext(request, variables))
         else:
             return formate(format, festes)
 
