@@ -217,7 +217,7 @@ def ubicacions(request, format='html'):
             poble=u_poble, adressa=u_adressa)
         ubi.save()
         ubi_id = 'ubicacions/' + str(ubi.id) + '.html'
-            return HttpResponseRedirect(ubi_id)
+        return HttpResponseRedirect(ubi_id)
     else:
         organitzadors = Organitzadors.objects.all()
         org = False
