@@ -1,5 +1,5 @@
 from rest_framework.fields import *
-from rest_framework.relations import HyperlinkedRelatedField, HyperlinkedIdentifyField
+from rest_framework.relations import HyperlinkedRelatedField
 from rest_framework.serializers import HyperlinkedModelSerializer
 from models import *
 
