@@ -16,11 +16,14 @@
         <div class="row">
             <div class="col-md-8">
                 <li><p><a href="/festes/{{festa.id}}/"><h3>{{festa.nom}}</h3></a></p></li>
-                {%if festa not in assis %}
+            </div>
+            {%if festa not in assis %}
+            <div class="col-md-4">
                 <button class="btn btn-primary asis-button">
                     <span class="glyphicon glyphicon-ok"> Participa-hi</span>
                 </button>
-                {% endif %}
+            </div>
+            {% endif %}
 	    </div>
         </div>
         </div>
