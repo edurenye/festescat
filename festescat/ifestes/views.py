@@ -149,7 +149,7 @@ def festes(request, format='html'):
         org.festa.add(festa)
         festa_id = 'festes/' + str(festa.id) + '.html'
         return HttpResponseRedirect(festa_id)
-    elif request.method == 'GET'::
+    elif request.method == 'GET':
         organitzadors = Organitzadors.objects.all()
         org = False
         if request.user in organitzadors:
