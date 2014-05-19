@@ -56,7 +56,7 @@ def org(request, username):
         of = OrgForm(request.POST, prefix='org')
         user = Usuaris.objects.get(username=username)
         empresa = request.POST['org-empresa']
-        org = Organitzadors(usuaris_ptr=user, empresa=empresa)
+        org = Organitzadors(usuaris_ptr=user, username=user.username, password=user.password, empresa=empresa)
         org.save()
         return HttpResponseRedirect('/')
     else:
