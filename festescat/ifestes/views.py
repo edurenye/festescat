@@ -208,6 +208,10 @@ def festa(request, idFesta, format='html'):
         festa.save()
     elif request.method == 'GET':
         if festa == None:
+            organitzadors = Organitzadors.objects.all()
+            org = False
+            if request.user in organitzadors:
+                org = True
             variables = Context({
                 'titlehead': 'Gestor de Festes',
                 'pagetitle': 'Festes',
