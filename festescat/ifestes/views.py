@@ -316,7 +316,7 @@ def ubi_update(request, idUbi):
     if request.method == 'POST':
         nuf = NewUbiForm(request.POST, instance=ubi)
         ubi.save()
-        ubi_id = 'ubicacions/' + str(ubi.id) + '.html'
+        ubi_id = '/ubicacions/' + str(ubi.id) + '.html'
         return HttpResponseRedirect(ubi_id)
     elif request.method == 'GET':
         variables = Context({
