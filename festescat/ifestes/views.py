@@ -320,9 +320,9 @@ def ubi_update(request, idUbi):
         return HttpResponseRedirect(ubi_id)
     elif request.method == 'GET':
         variables = Context({
-            'ubicacio': ubicacio,
+            'ubicacio': ubi,
             'titlehead': 'Detalls de la Ubicacio',
-            'pagetitle': ubicacio.adressa,
+            'pagetitle': ubi.adressa,
         })
         nuf = NewUbiForm()
         return render_to_response('ubicacio.html',
