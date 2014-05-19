@@ -86,8 +86,8 @@
       <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ifestes/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.61604095" vertical-offset="4409" max-vertical-offset="6120">
-              <caret line="318" column="19" selection-start-line="318" selection-start-column="19" selection-end-line="318" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.71843004" vertical-offset="4454" max-vertical-offset="6120">
+              <caret line="325" column="10" selection-start-line="325" selection-start-column="10" selection-end-line="325" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -351,7 +351,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1215" height="1000" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -597,8 +597,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ifestes/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61604095" vertical-offset="4409" max-vertical-offset="6120">
-          <caret line="318" column="19" selection-start-line="318" selection-start-column="19" selection-end-line="318" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.71843004" vertical-offset="4454" max-vertical-offset="6120">
+          <caret line="325" column="10" selection-start-line="325" selection-start-column="10" selection-end-line="325" selection-end-column="10" />
           <folding />
         </state>
       </provider>
