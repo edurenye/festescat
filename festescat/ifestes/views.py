@@ -180,7 +180,10 @@ def festes(request, format='html'):
 
 
 def festa(request, idFesta, format='html'):
-    festa = Festes.objects.get(id=idFesta)
+    try:
+        festa = Festes.objects.get(id=idFesta)
+    catch:
+        festa = None
     if request.method == 'PUT':
         if festa == None:
             nff = NewFestaForm(request.POST)
