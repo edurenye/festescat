@@ -205,23 +205,40 @@ def festa(request, idFesta, format='html'):
 
 
 def ubicacions(request, format='html'):
-    organitzadors = Organitzadors.objects.all()
-    org = False
-    if request.user in organitzadors:
-        org = True
-    try:
-        ubicacions = Ubicacions.objects.all()
-    except:
-        raise Http404('No hi ha cap ubicacio')
-    if(format == 'html'):
-        variables = Context({
-            'ubicacions': ubicacions,
-            'titlehead': "Llista dubicacions",
-            'pagetitle': 'Ubicacions',
-            })
-        return render(request, "ubicacions.html", variables)
+    if request.method == 'POST':
+        nuf = NewUbiForm(request.POST)
+        u_latitude = request.POST['latitude']
+        u_longitude = request.POST['longitude']
+        u_provincia = request.POST['provincia']
+        u_comarca = request.POST['comarca']
+        u_poble = request.POST['poble']
+        u_adressa = request.POST['adressa']
+        ubi = Ubicacions(latitude=u_latitude, longitude=u_longitude, provincia=u_provincia, comarcaa=u_comarca,
+            poble=u_poble, adressa=u_adressa)
+        ubi.save()
+        ubi_id = 'ubicacions/' + str(ubi.id) + '.html'
+            return HttpResponseRedirect('ubi_id')
     else:
-        return formate(format, ubicacions)
+        organitzadors = Organitzadors.objects.all()
+        org = False
+        if request.user in organitzadors:
+            org = True
+        try:
+            ubicacions = Ubicacions.objects.all()
+        except:
+            raise Http404('No hi ha cap ubicacio')
+        if(format == 'html'):
+            variables = Context({
+                'ubicacions': ubicacions,
+                'titlehead': "Llista dubicacions",
+                'pagetitle': 'Ubicacions',
+                })
+            nuf = NewUbiForm()
+            return render_to_response("ubicacions.html",
+                dict(newubiform=nuf),
+                context_instance=RequestContext(request, variables))
+        else:
+            return formate(format, ubicacions)
 
 
 def ubicacio(request, idUbi, format='html'):

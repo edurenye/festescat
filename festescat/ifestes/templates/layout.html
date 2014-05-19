@@ -9,6 +9,12 @@
     </script><script src="{% static "js/bootstrap.min.js" %}"></script>
     </head>
 <body>
+    <script>
+        function showAddForm() {
+            document.getElementById("llistaFestes").setAttribute("class","col-md-6");
+            document.getElementById("newFesta").setAttribute("class","col-md-6");
+        }
+    </script>
     <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
       <div class="container-fluid">
         <div class="navbar-header">

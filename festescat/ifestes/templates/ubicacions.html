@@ -1,15 +1,32 @@
 {% extends "layout.html" %}
 {% block content %}
 <div class="col-md-8">
-<h1>Totes les ubicacions</h1>
-{% if ubicacions %}
-    <ul>
-        {% for ubicacio in ubicacions %}
-        <li><p><a href="/ubicacions/{{ubicacio.id}}/"><h3>{{ubicacio.adressa}}</h3></a></p></li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No hi ha ubicacions</p>
-{% endif %}
+    <h1>Totes les ubicacions</h1>
+    <div class="new-button">
+        <button class="btn btn-primary" type="button" onclick="showAddForm()">
+            <span class="glyphicon glyphicon-plus"> Nova Ubicació</span>
+        </button>
+    </div>
+    {% if ubicacions %}
+        <ul>
+            {% for ubicacio in ubicacions %}
+            <li><p><a href="/ubicacions/{{ubicacio.id}}/"><h3>{{ubicacio.adressa}}</h3></a></p></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hi ha ubicacions</p>
+    {% endif %}
+</div>
+<div id="newUbi" class="col-md-6 hidden">
+    {% if user %}
+    <h1>Crea una nova Ubicació</h1>
+    <form id='formulari' method="POST" action="">
+        {% csrf_token %}
+        <table>
+            {{newubiform}}
+        </table>
+        <input type="submit" value="Crea">
+    </form>
+    {% endif %}
 </div>
 {% endblock %}
