@@ -46,7 +46,7 @@
       <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ifestes/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.47324416" vertical-offset="3002" max-vertical-offset="4770">
+            <state vertical-scroll-proportion="0.67725754" vertical-offset="2880" max-vertical-offset="4770">
               <caret line="219" column="40" selection-start-line="219" selection-start-column="40" selection-end-line="219" selection-end-column="40" />
               <folding />
             </state>
@@ -66,8 +66,8 @@
       <file leaf-file-name="forms.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ifestes/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="857" max-vertical-offset="1455">
-              <caret line="91" column="26" selection-start-line="91" selection-start-column="26" selection-end-line="91" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1455">
+              <caret line="0" column="69" selection-start-line="0" selection-start-column="69" selection-end-line="0" selection-end-column="69" />
               <folding />
             </state>
           </provider>
@@ -87,11 +87,11 @@
         <option value="$PROJECT_DIR$/ifestes/static/css/style.css" />
         <option value="$PROJECT_DIR$/festescat/urls.py" />
         <option value="$PROJECT_DIR$/ifestes/templates/org.html" />
-        <option value="$PROJECT_DIR$/ifestes/forms.py" />
         <option value="$PROJECT_DIR$/ifestes/templates/ubicacions.html" />
         <option value="$PROJECT_DIR$/ifestes/templates/festes.html" />
         <option value="$PROJECT_DIR$/ifestes/templates/layout.html" />
         <option value="$PROJECT_DIR$/ifestes/views.py" />
+        <option value="$PROJECT_DIR$/ifestes/forms.py" />
       </list>
     </option>
   </component>
@@ -484,15 +484,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ifestes/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="857" max-vertical-offset="1455">
-          <caret line="91" column="26" selection-start-line="91" selection-start-column="26" selection-end-line="91" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1455">
+          <caret line="0" column="69" selection-start-line="0" selection-start-column="69" selection-end-line="0" selection-end-column="69" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ifestes/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47324416" vertical-offset="3002" max-vertical-offset="4770">
+        <state vertical-scroll-proportion="0.67725754" vertical-offset="2880" max-vertical-offset="4770">
           <caret line="219" column="40" selection-start-line="219" selection-start-column="40" selection-end-line="219" selection-end-column="40" />
           <folding />
         </state>
