@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="col-md-8">
+<div class="col-md-6">
 <h1>Totes les festes</h1>
 {% if organitzadors.username %}
 <div class="new-button">
@@ -12,23 +12,25 @@
 {% if festes %}
     <ul>
         {% for festa in festes %}
-	<div>
-        <li><p>
-            <a href="/festes/{{festa.id}}/"><h3>{{festa.nom}}</h3></a>
-            {%if festa not in assis %}
-            <button class="btn btn-primary asis-button">
-                <span class="glyphicon glyphicon-ok"> Participa-hi</span>
-            </button>
-            {% endif %}
-        </p></li>
-	</div>
+	<div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <li><p><a href="/festes/{{festa.id}}/"><h3>{{festa.nom}}</h3></a></p></li>
+                {%if festa not in assis %}
+                <button class="btn btn-primary asis-button">
+                    <span class="glyphicon glyphicon-ok"> Participa-hi</span>
+                </button>
+                {% endif %}
+	    </div>
+        </div>
+        </div>
         {% endfor %}
     </ul>
 {% else %}
     <p>No hi ha cap festa</p>
 {% endif %}
 </div>
-<div class="col-md-4">
+<div class="col-md-6">
 {% if user %}
     <h1>Festes a les que assisteixes</h1>
     <ul>
