@@ -148,7 +148,7 @@ def festes(request, format='html'):
         festa.save()
         org.festa.add(festa)
         festa_id = 'festes/' + str(festa.id) + '.html'
-        return HttpResponseRedirect('festa_id')
+        return HttpResponseRedirect(festa_id)
     else:
         organitzadors = Organitzadors.objects.all()
         org = False
@@ -217,7 +217,7 @@ def ubicacions(request, format='html'):
             poble=u_poble, adressa=u_adressa)
         ubi.save()
         ubi_id = 'ubicacions/' + str(ubi.id) + '.html'
-            return HttpResponseRedirect('ubi_id')
+            return HttpResponseRedirect(ubi_id)
     else:
         organitzadors = Organitzadors.objects.all()
         org = False
@@ -234,7 +234,7 @@ def ubicacions(request, format='html'):
                 'pagetitle': 'Ubicacions',
                 })
             nuf = NewUbiForm()
-            return render_to_response("ubicacions.html",
+            return render_to_response('ubicacions.html',
                 dict(newubiform=nuf),
                 context_instance=RequestContext(request, variables))
         else:
