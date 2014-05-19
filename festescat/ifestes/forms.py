@@ -1,4 +1,4 @@
-from ifestes.models import Usuaris
+from ifestes.models import Usuaris, Organitzadors
 from django.forms import ModelForm
 from django import forms
 
