@@ -213,7 +213,7 @@ def ubicacions(request, format='html'):
         u_comarca = request.POST['comarca']
         u_poble = request.POST['poble']
         u_adressa = request.POST['adressa']
-        ubi = Ubicacions(latitude=u_latitude, longitude=u_longitude, provincia=u_provincia, comarcaa=u_comarca,
+        ubi = Ubicacions(latitude=u_latitude, longitude=u_longitude, provincia=u_provincia, comarca=u_comarca,
             poble=u_poble, adressa=u_adressa)
         ubi.save()
         ubi_id = 'ubicacions/' + str(ubi.id) + '.html'
