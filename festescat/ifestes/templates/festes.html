@@ -1,12 +1,17 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="col-md-8">
+<script>
+    function showAddForm() {
+        document.getElementById("llistaFestes").setAttribute("class","col-md-6");
+    }
+</script>
+<div id="llistaFestes" class="col-md-8">
 <h1>Totes les festes</h1>
     {% comment %}
 {% if org %}
     {% endcomment %}
 <div class="new-button">
-    <button class="btn btn-primary">
+    <button class="btn btn-primary" type="button" onclick="showAddForm()">
         <span class="glyphicon glyphicon-plus"> Nova Festa</span>
     </button>
 </div>
