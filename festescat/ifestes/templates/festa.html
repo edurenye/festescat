@@ -35,7 +35,7 @@
 <div id="AddForm" class="col-md-6 hidden">
     {% if user %}
     <h1>Edita la festa</h1>
-    <form id='formulari' method="POST" action="">
+    <form id='formulari' method="PUT" action="">
         {% csrf_token %}
         <table>
             {{newfestaform}}
@@ -55,7 +55,7 @@
 <div id="AddForm" class="col-md-6 hidden">
     {% if user %}
     <h1>Crea una nova festa</h1>
-    <form id='formulari' method="POST" action="">
+    <form id='formulari' method="PUT" action="">
         {% csrf_token %}
         <table>
             {{newfestaform}}
