@@ -147,7 +147,7 @@ def festes(request, format='html'):
             descripcio=f_descripcio, localitat=f_localitat)
         festa.save()
         org.festa.add(festa)
-        festa_id = 'festes/' + festa.festes_pk + '.html'
+        festa_id = 'festes/' + festa.id + '.html'
         return HttpResponseRedirect('festa_id')
     else:
         organitzadors = Organitzadors.objects.all()
