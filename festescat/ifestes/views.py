@@ -123,7 +123,10 @@ def festes(request, format='html'):
     except:
         raise Http404('No hi ha cap festa')
     if request.user.is_authenticated():
-        assis = request.user.assistencia.all()
+        username = request.user.username()
+        user = Usuaris.objects.get(username=username)
+        assis = user.assistencia.all()
+
     else:
         assis = []
     if(format == 'html'):
