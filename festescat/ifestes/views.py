@@ -383,15 +383,15 @@ def formate(format, entity):
         raise Http404('Format no valid')
 
 
-from rest_framework import generics
+'''from rest_framework import generics
 from serializers import UbicacioSerializer
 
-'''
+
 class IsOwnerOrReadOnly(Permissions.BasePermission):
     def has_object_permission(self,request,view,obj):
         if request.method in permission.SAFE_METHODS:
             return True
-        return obj.user == request.user'''
+        return obj.user == request.user
 
 class APIUbicacioDetail(generics.RetrieveUpdateDestroyAPIView):
     model = Ubicacions
@@ -400,4 +400,4 @@ class APIUbicacioDetail(generics.RetrieveUpdateDestroyAPIView):
 
 class APIUbicacionsList(generics.ListCreateAPIView):
     model = Ubicacions
-    serializer_class = CiutatSerializer
+    serializer_class = CiutatSerializer'''

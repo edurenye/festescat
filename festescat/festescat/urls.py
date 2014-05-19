@@ -30,8 +30,8 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     #RESTfull API
-    url(r'^api/ubicacions/$', APIUbicacionsList.as_view(), name='ubi-list'),
-    url(r'^api/ubicacions/(?P<pk>\d+)/$', APIUbicacioDetail.as_view(),name='ubi-detail'),
+    '''url(r'^api/ubicacions/$', APIUbicacionsList.as_view(), name='ubi-list'),
+    url(r'^api/ubicacions/(?P<pk>\d+)/$', APIUbicacioDetail.as_view(),name='ubi-detail'),'''
 
 )
 

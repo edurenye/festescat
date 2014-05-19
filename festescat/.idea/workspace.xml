@@ -43,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="serializers.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="serializers.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ifestes/serializers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.025597269" vertical-offset="0" max-vertical-offset="586">
-              <caret line="1" column="60" selection-start-line="1" selection-start-column="60" selection-end-line="1" selection-end-column="60" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
+              <caret line="15" column="87" selection-start-line="15" selection-start-column="87" selection-end-line="15" selection-end-column="87" />
               <folding />
             </state>
           </provider>
@@ -86,18 +86,18 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ifestes/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4484" max-vertical-offset="6120">
-              <caret line="326" column="26" selection-start-line="326" selection-start-column="26" selection-end-line="326" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="5534" max-vertical-offset="6120">
+              <caret line="402" column="42" selection-start-line="402" selection-start-column="42" selection-end-line="402" selection-end-column="42" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="urls.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/festescat/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="780">
-              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.8447099" vertical-offset="0" max-vertical-offset="780">
+              <caret line="33" column="92" selection-start-line="33" selection-start-column="92" selection-end-line="33" selection-end-column="92" />
               <folding />
             </state>
           </provider>
@@ -123,9 +123,9 @@
         <option value="$PROJECT_DIR$/ifestes/templates/ubicacio.html" />
         <option value="$PROJECT_DIR$/ifestes/forms.py" />
         <option value="$PROJECT_DIR$/festescat/settings.py" />
+        <option value="$PROJECT_DIR$/ifestes/serializers.py" />
         <option value="$PROJECT_DIR$/ifestes/views.py" />
         <option value="$PROJECT_DIR$/festescat/urls.py" />
-        <option value="$PROJECT_DIR$/ifestes/serializers.py" />
       </list>
     </option>
   </component>
@@ -558,26 +558,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ifestes/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
+          <caret line="15" column="87" selection-start-line="15" selection-start-column="87" selection-end-line="15" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ifestes/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4484" max-vertical-offset="6120">
-          <caret line="326" column="26" selection-start-line="326" selection-start-column="26" selection-end-line="326" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="5534" max-vertical-offset="6120">
+          <caret line="402" column="42" selection-start-line="402" selection-start-column="42" selection-end-line="402" selection-end-column="42" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/festescat/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="780">
-          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ifestes/serializers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.025597269" vertical-offset="0" max-vertical-offset="586">
-          <caret line="1" column="60" selection-start-line="1" selection-start-column="60" selection-end-line="1" selection-end-column="60" />
+        <state vertical-scroll-proportion="0.8447099" vertical-offset="0" max-vertical-offset="780">
+          <caret line="33" column="92" selection-start-line="33" selection-start-column="92" selection-end-line="33" selection-end-column="92" />
           <folding />
         </state>
       </provider>
