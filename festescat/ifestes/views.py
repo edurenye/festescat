@@ -122,7 +122,7 @@ def festes(request, format='html'):
     if request.user.is_authenticated() and isinstance(request.user, Organitzadors):
         assis = request.user.assistencia.all()
     else:
-        assis = None
+        assis = []
     print assis
     if(format == 'html'):
         variables = Context({
