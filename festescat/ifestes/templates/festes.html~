@@ -12,16 +12,18 @@
 {% if festes %}
     <ul>
         {% for festa in festes %}
-	<div>
-        <li><p>
-            <a href="/festes/{{festa.id}}/"><h3>{{festa.nom}}</h3></a>
-            {%if festa not in assis %}
-            <button class="btn btn-primary asis-button">
-                <span class="glyphicon glyphicon-ok"> Participa-hi</span>
-            </button>
-            {% endif %}
-        </p></li>
-	</div>
+	<div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <li><p><a href="/festes/{{festa.id}}/"><h3>{{festa.nom}}</h3></a></p></li>
+                {%if festa not in assis %}
+                <button class="btn btn-primary asis-button">
+                    <span class="glyphicon glyphicon-ok"> Participa-hi</span>
+                </button>
+                {% endif %}
+	    </div>
+        </div>
+        </div>
         {% endfor %}
     </ul>
 {% else %}
