@@ -2,13 +2,17 @@
 {% block content %}
 <div class="col-md-8">
 <h1>Totes les festes</h1>
+    {% comment %}
 {% if org %}
+    {% endcomment %}
 <div class="new-button">
     <button class="btn btn-primary">
         <span class="glyphicon glyphicon-plus"> Nova Festa</span>
     </button>
 </div>
+    {% comment %}
 {% endif %}
+    {% endcomment %}
 {% if festes %}
     <ul>
         {% for festa in festes %}
