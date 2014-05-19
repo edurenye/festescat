@@ -373,6 +373,10 @@ class IsOwnerOrReadOnly(Permissions.BasePermission):
         return obj.user == request.user'''
 
 class APIUbicacioDetail(generics.RetrieveUpdateDestroyAPIView):
-    #permission_classes = (IsOwnerOrReadOnly,)
+    model = Ubicacions
+    serializer_class = CiutatSerializer
+
+
+class APIUbicacionsList(generics.ListCreateAPIView):
     model = Ubicacions
     serializer_class = CiutatSerializer

@@ -21,13 +21,16 @@ urlpatterns = patterns('',
     url(r'^events/$', events, name='events'),
     url(r'^events/(\d+)/$', event),
 
-    url(r'^ubicacions/(\d+)/edit/$', APIUbicacioDetail.as_view(),name='ubi-detail'),
-
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
+
+    #RESTfull API
+    url(r'^api/ubicacions/$', APIUbicacionsList.as_view(), name='ubi-list'),
+    url(r'^api/ubicacions/(?P<pk>\d+)/$', APIUbicacioDetail.as_view(),name='ubi-detail'),
+
 )
 
 format_urlpatterns = patterns('',
