@@ -23,21 +23,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="festa.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="festa.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ifestes/templates/festa.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.083334" vertical-offset="1" max-vertical-offset="585">
-              <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.7705479" vertical-offset="180" max-vertical-offset="1110">
+              <caret line="42" column="42" selection-start-line="42" selection-start-column="42" selection-end-line="42" selection-end-column="42" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="festes.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ifestes/templates/festes.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="870">
+              <caret line="2" column="20" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ifestes/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.43421054" vertical-offset="3036" max-vertical-offset="5340">
-              <caret line="220" column="44" selection-start-line="220" selection-start-column="44" selection-end-line="220" selection-end-column="44" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2856" max-vertical-offset="5340">
+              <caret line="215" column="48" selection-start-line="215" selection-start-column="48" selection-end-line="215" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -60,9 +70,9 @@
         <option value="$PROJECT_DIR$/ifestes/forms.py" />
         <option value="$PROJECT_DIR$/ifestes/templates/ubicacions.html" />
         <option value="$PROJECT_DIR$/ifestes/templates/festes.html" />
-        <option value="$PROJECT_DIR$/ifestes/templates/festa.html" />
         <option value="$PROJECT_DIR$/ifestes/templates/layout.html" />
         <option value="$PROJECT_DIR$/ifestes/views.py" />
+        <option value="$PROJECT_DIR$/ifestes/templates/festa.html" />
       </list>
     </option>
   </component>
@@ -467,26 +477,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ifestes/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2811" max-vertical-offset="5340">
+          <caret line="215" column="48" selection-start-line="215" selection-start-column="48" selection-end-line="215" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ifestes/templates/festes.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23116438" vertical-offset="0" max-vertical-offset="870">
-          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+        <state vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="870">
+          <caret line="2" column="20" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ifestes/templates/festa.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.083334" vertical-offset="1" max-vertical-offset="585">
-          <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ifestes/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43421054" vertical-offset="3036" max-vertical-offset="5340">
-          <caret line="220" column="44" selection-start-line="220" selection-start-column="44" selection-end-line="220" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.7705479" vertical-offset="180" max-vertical-offset="1110">
+          <caret line="42" column="42" selection-start-line="42" selection-start-column="42" selection-end-line="42" selection-end-column="42" />
           <folding />
         </state>
       </provider>

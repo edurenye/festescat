@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="col-md-8">
+<div id="LlistaElems" class="col-md-8">
 <h1>Festa</h1>
 {% if festa %}
     <ul>
@@ -9,6 +9,11 @@
                 <span class="glyphicon glyphicon-remove"> Elimina la festa</span>
             </button>
         </form>
+        <div class="new-button">
+            <button class="btn btn-primary" type="button" onclick="showAddForm()">
+                <span class="glyphicon glyphicon-pencil"> Edita la Festa</span>
+            </button>
+        </div>
         <p>Nom: {{ festa.nom }}</p>
         <p>Data d'inici: {{ festa.data_inici }}</p>
         <p>Data de finalització: {{ festa.data_fi }}</p>
@@ -26,8 +31,38 @@
             <p>No hi ha cap event</p>
         {% endif %}
     </ul>
+</div>
+<div id="AddForm" class="col-md-6 hidden">
+    {% if user %}
+    <h1>Edita la festa</h1>
+    <form id='formulari' method="POST" action="">
+        {% csrf_token %}
+        <table>
+            {{newfestaform}}
+        </table>
+        <input type="submit" value="Guarda">
+    </form>
+    {% endif %}
+</div>
 {% else %}
     <p>No existeix aquesta festa.</p>
-{% endif %}
+    <div class="new-button">
+        <button class="btn btn-primary" type="button" onclick="showAddForm()">
+            <span class="glyphicon glyphicon-plus"> Nova Festa</span>
+        </button>
+    </div>
 </div>
+<div id="AddForm" class="col-md-6 hidden">
+    {% if user %}
+    <h1>Crea una nova festa</h1>
+    <form id='formulari' method="POST" action="">
+        {% csrf_token %}
+        <table>
+            {{newfestaform}}
+        </table>
+        <input type="submit" value="Crea">
+    </form>
+    {% endif %}
+</div>
+{% endif %}
 {% endblock %}
