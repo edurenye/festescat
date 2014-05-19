@@ -58,6 +58,7 @@ def org(request, username):
         empresa = request.POST['org-empresa']
         org = Organitzadors(usuaris_ptr=user, empresa=empresa)
         org.save()
+        return HttpResponseRedirect('/')
     else:
         variables = Context({
             'user': request.user,
