@@ -73,7 +73,7 @@ class NewFestaForm(ModelForm):
     data_inici = forms.DateTimeField(label="Data d'inici de la festa")
     data_fi = forms.DateTimeField(label="Data final de la festa")
     categoria = forms.CharField(label="Categoria")
-    descripcio = forms.TextField(label="Descripció")
+    descripcio = forms.TextField(label="Descripcio")
     localitat = forms.CharField(label="Localitat")
 
     class Meta:
