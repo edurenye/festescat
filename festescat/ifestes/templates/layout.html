@@ -37,7 +37,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             {% if user.username %}
-                {% if !org %}
+                {% if not org %}
                 <li><div class="btn-group">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">{{user.username}} <span class="caret"></span>
                     </button>
