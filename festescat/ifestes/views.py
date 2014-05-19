@@ -312,16 +312,9 @@ def ubicacio(request, idUbi, format='html'):
 
 
 def ubi_update(request, idUbi):
+    ubi = Ubicacions.objects.get(id=idUbi)
     if request.method == 'POST':
-        nuf = NewUbiForm(request.POST)
-        u_latitude = request.POST['latitude']
-        u_longitude = request.POST['longitude']
-        u_provincia = request.POST['provincia']
-        u_comarca = request.POST['comarca']
-        u_poble = request.POST['poble']
-        u_adressa = request.POST['adressa']
-        ubi = Ubicacions(latitude=u_latitude, longitude=u_longitude, provincia=u_provincia, comarca=u_comarca,
-            poble=u_poble, adressa=u_adressa)
+        nuf = NewUbiForm(request.POST, instance=ubi)
         ubi.save()
         ubi_id = 'ubicacions/' + str(ubi.id) + '.html'
         return HttpResponseRedirect(ubi_id)
@@ -331,9 +324,9 @@ def ubi_update(request, idUbi):
             'titlehead': 'Detalls de la Ubicacio',
             'pagetitle': ubicacio.adressa,
         })
-        nff = NewFestaForm()
+        nuf = NewUbiForm()
         return render_to_response('ubicacio.html',
-            dict(newfestaform=nff),
+            dict(newubiform=nuf),
             context_instance=RequestContext(request, variables))
     else:
             return Http405()
