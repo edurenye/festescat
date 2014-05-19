@@ -182,7 +182,7 @@ def festes(request, format='html'):
 def festa(request, idFesta, format='html'):
     try:
         festa = Festes.objects.get(id=idFesta)
-    catch:
+    except:
         festa = None
     if request.method == 'PUT':
         if festa == None:
