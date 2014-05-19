@@ -57,7 +57,6 @@ def org(request, username):
         user = Usuaris.objects.get(username=username)
         empresa = request.POST['org-empresa']
         org = Organitzadors(usuaris_ptr=user, empresa=empresa)
-        user.delete()
         org.save()
         return HttpResponseRedirect('/')
     else:
