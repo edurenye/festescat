@@ -244,7 +244,10 @@ def festa(request, idFesta, format='html'):
                     'titlehead': 'Detalls de la Festa',
                     'pagetitle': festa.nom,
                 })
-                return render(request, "festa.html", variables)
+                nff = NewFestaForm()
+                return render_to_response('festa.html',
+                    dict(newfestaform=nff),
+                    context_instance=RequestContext(request, variables))
             else:
                 return formate(format, Festes.objects.filter(id=idFesta))
     else:
