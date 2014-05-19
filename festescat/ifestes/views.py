@@ -167,7 +167,7 @@ def festes(request, format='html'):
                 'assis': assis,
                 'org': org,
                 })
-            nff = NewFestForm()
+            nff = NewFestaForm()
             return render_to_response('festes.html',
                 dict(newfestaform=nff),
                 context_instance=RequestContext(request, variables))
