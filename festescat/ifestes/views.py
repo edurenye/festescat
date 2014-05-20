@@ -259,17 +259,7 @@ def festa(request, idFesta, format='html'):
                 org = True
             festa = Festes.objects.get(id=idFesta)
             if(format == 'html'):
-                events = Events.objects.filter(festa=festa)
-                variables = Context({
-                    'festa': festa,
-                    'events': events,
-                    'titlehead': 'Detalls de la Festa',
-                    'pagetitle': festa.nom,
-                })
-                nff = FestaForm()
-                return render_to_response('festa.html',
-                    dict(newfestaform=nff),
-                    context_instance=RequestContext(request, variables))
+                return HttpResponseRedirect('/festes/' + str(idFesta) + '/')
             else:
                 return formate(format, Festes.objects.filter(id=idFesta))
     else:
@@ -354,22 +344,8 @@ def ubicacions(request, format='html'):
 
 
 def ubicacio(request, idUbi, format='html'):
-    organitzadors = Organitzadors.objects.all()
-    org = False
-    if request.user in organitzadors:
-        org = True
-    try:
-        ubicacio = Ubicacions.objects.get(id=idUbi)
-    except:
-        raise Http404('No existeix aquesta ubicacio')
     if(format == 'html'):
-        variables = Context({
-            'ubicacio': ubicacio,
-            'titlehead': 'Detalls de la Ubicacio',
-            'pagetitle': ubicacio.adressa,
-            'org': org,
-            })
-        return render(request, "ubicacio.html", variables)
+        return HttpResponseRedirect('/ubicacions/' + str(idUbi) + '/')
     else:
         return formate(format, Ubicacions.objects.filter(id=idUbi))
 
@@ -399,22 +375,8 @@ def events(request, format='html'):
 
 
 def event(request, idEvent, format='html'):
-    organitzadors = Organitzadors.objects.all()
-    org = False
-    if request.user in organitzadors:
-        org = True
-    try:
-        event = Events.objects.get(id=idEvent)
-    except:
-        raise Http404('No existeix cap event')
     if(format == 'html'):
-        variables = Context({
-            'event': event,
-            'titlehead': 'Detalls del event',
-            'pagetitle': event.nom,
-            'org': org,
-            })
-        return render(request, "event.html", variables)
+        return HttpResponseRedirect('/events/' + str(idEvent) + '/')
     else:
         return formate(format, Events.objects.filter(id=idEvent))
 
@@ -430,21 +392,41 @@ def formate(format, entity):
         raise Http404('Format no valid')
 
 
-'''from rest_framework import generics
-from serializers import UbicacioSerializer
+from rest_framework import generics
+from .serializers import *
 
 
-class IsOwnerOrReadOnly(Permissions.BasePermission):
-    def has_object_permission(self,request,view,obj):
-        if request.method in permission.SAFE_METHODS:
-            return True
-        return obj.user == request.user
+#class IsOwnerOrReadOnly(Permissions.BasePermission):
+    #def has_object_permission(self,request,view,obj):
+        #if request.method in permission.SAFE_METHODS:
+            #return True
+        #return obj.user == request.user
 
 class APIUbicacioDetail(generics.RetrieveUpdateDestroyAPIView):
     model = Ubicacions
-    serializer_class = CiutatSerializer
+    serializer_class = UbicacioSerializer
 
 
 class APIUbicacionsList(generics.ListCreateAPIView):
     model = Ubicacions
-    serializer_class = CiutatSerializer'''
+    serializer_class = UbicacioSerializer
+
+
+class APIEventDetail(generics.RetrieveUpdateDestroyAPIView):
+    model = Events
+    serializer_class = EventSerializer
+
+
+class APIEventsList(generics.ListCreateAPIView):
+    model = Events
+    serializer_class = EventSerializer
+
+
+class APIFestaDetail(generics.RetrieveUpdateDestroyAPIView):
+    model = Festes
+    serializer_class = FestaSerializer
+
+
+class APIFestesList(generics.ListCreateAPIView):
+    model = Festes
+    serializer_class = FestaSerializer

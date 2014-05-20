@@ -75,12 +75,19 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
+)
 
-    #RESTfull API
-    #url(r'^api/ubicacions/$', APIUbicacionsList.as_view(), name='ubi-list'),
-    #url(r'^api/ubicacions/(?P<pk>\d+)/$', APIUbicacioDetail.as_view(),
-        #name='ubi-detail'),
-
+#RESTfull API
+urlpatterns += patterns('',
+    url(r'^api/ubicacions/$', APIUbicacionsList.as_view(), name='api_ubi-list'),
+    url(r'^api/ubicacions/(?P<pk>\d+)/$', APIUbicacioDetail.as_view(),
+        name='api_ubi-detail'),
+    url(r'^api/events/$', APIEventsList.as_view(), name='api_event-list'),
+    url(r'^api/events/(?P<pk>\d+)/$', APIEventDetail.as_view(),
+        name='api_event-detail'),
+    url(r'^api/festes/$', APIFestesList.as_view(), name='api_festa-list'),
+    url(r'^api/festes/(?P<pk>\d+)/$', APIFestaDetail.as_view(),
+        name='api_festa-detail'),
 )
 
 format_urlpatterns = patterns('',
