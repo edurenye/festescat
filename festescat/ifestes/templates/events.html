@@ -1,15 +1,34 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="col-md-8">
-<h1>Tots els events</h1>
-{% if events %}
-    <ul>
-        {% for event in events %}
-        <li><p><a href="/events/{{event.id}}/"><h3>{{event.nom}}</h3></a></p></li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No hi ha cap event</p>
-{% endif %}
+<div id="LlistaElems" class="col-md-8">
+    <h1>Tots els events</h1>
+    <div class="new-button">
+        <button class="btn btn-primary" type="button" onclick="showAddForm()">
+            <span class="glyphicon glyphicon-plus"> Nou Event</span>
+        </button>
+    </div>
+    {% if events %}
+        <ul>
+            {% for event in events %}
+                <li><p>
+                    <a href="/events/{{event.id}}/"><h3>{{event.nom}}</h3></a>
+                </p></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hi ha cap event</p>
+    {% endif %}
+</div>
+<div id="AddForm" class="col-md-6 hidden">
+    {% if user %}
+    <h1>Crea un nou event</h1>
+    <form id='formulari' method="POST" action="create/">
+        {% csrf_token %}
+        <table>
+            {{eventform}}
+        </table>
+        <input type="submit" value="Crea">
+    </form>
+    {% endif %}
 </div>
 {% endblock %}

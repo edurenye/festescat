@@ -4,15 +4,18 @@
 <h1>Ubicacio</h1>
 {% if ubicacions %}
     <ul>
-        <form id='formulari' method="DELETE" action="">
+        <form id='formulari' method="PUT" action="delete/">
             <button class="btn btn-primary" type="submit">
                 <span class="glyphicon glyphicon-remove"> Elimina la Ubicació</span>
             </button>
         </form>
         <div class="new-button">
-            <button class="btn btn-primary" type="button" onclick="showAddForm()">
-                <span class="glyphicon glyphicon-pencil"> Edita la Ubicació</span>
-            </button>
+            <form id='formulari' method="PUT" action="edit/">
+                <button class="btn btn-primary" type="submit">
+                {% comment %} onclick="showAddForm()">{% endcomment %}
+                    <span class="glyphicon glyphicon-pencil"> Edita la Ubicació</span>
+                </button>
+            </form>
         </div>
         <p>Adressa: {{ ubicacions.adressa }}</p>
         <p>Poble: {{ ubicacions.poble }}</p>

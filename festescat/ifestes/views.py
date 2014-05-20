@@ -154,7 +154,7 @@ def tanca(request):
 
 def festes(request, format='html'):
     if request.method == 'POST':
-        nff = NewFestaForm(request.POST)
+        nff = FestaForm(request.POST)
         user = request.user
         org = Organitzadors.objects.get(username=user.username)
         f_nom = request.POST['nom']
@@ -190,7 +190,7 @@ def festes(request, format='html'):
                 'assis': assis,
                 'org': org,
                 })
-            nff = NewFestaForm()
+            nff = FestaForm()
             return render_to_response('festes.html',
                 dict(newfestaform=nff),
                 context_instance=RequestContext(request, variables))
@@ -207,7 +207,7 @@ def festa(request, idFesta, format='html'):
         festa = None
     if request.method == 'PUT':
         if festa is None:
-            nff = NewFestaForm(request.PUT)
+            nff = FestaForm(request.PUT)
             user = request.user
             org = Organitzadors.objects.get(username=user.username)
             f_nom = request.POST['nom']
@@ -224,7 +224,7 @@ def festa(request, idFesta, format='html'):
             festa_id = '/festes/' + str(festa.id) + '/'
             return HttpResponseRedirect(festa_id)
         else:
-            nff = NewFestaForm(request.PUT, instance=festa)
+            nff = FestaForm(request.PUT, instance=festa)
             festa.save()
             events = Events.objects.filter(festa=festa)
             variables = Context({
@@ -248,7 +248,7 @@ def festa(request, idFesta, format='html'):
                 'pagetitle': 'Festes',
                 'org': org,
             })
-            nff = NewFestaForm()
+            nff = FestaForm()
             return render_to_response('festa.html',
                 dict(newfestaform=nff),
                 context_instance=RequestContext(request, variables))
@@ -266,7 +266,7 @@ def festa(request, idFesta, format='html'):
                     'titlehead': 'Detalls de la Festa',
                     'pagetitle': festa.nom,
                 })
-                nff = NewFestaForm()
+                nff = FestaForm()
                 return render_to_response('festa.html',
                     dict(newfestaform=nff),
                     context_instance=RequestContext(request, variables))
@@ -274,6 +274,27 @@ def festa(request, idFesta, format='html'):
                 return formate(format, Festes.objects.filter(id=idFesta))
     else:
         return Http405()
+
+
+class UserUpdateView(LoginRequiredMixin, UpdateView):
+    model = Usuaris
+    template_name = 'form.html'
+
+
+class OrganitzadorUpdateView(LoginRequiredMixin, UpdateView):
+    model = Organitzadors
+    template_name = 'form.html'
+
+
+class FestaDetail(DetailView):
+    model = Festes
+    template_name = 'festa.html'
+
+
+class FestaDelete(LoginRequiredMixin, CheckIsOrganitzador, DeleteView):
+    model = Festes
+    template_name = 'confirm_delete.html'
+    success_url = reverse_lazy('festes')
 
 
 class UbicacioDetail(DetailView):
@@ -302,43 +323,34 @@ class EventDetail(DetailView):
     template_name = 'event.html'
 
 
+class EventDelete(LoginRequiredMixin, CheckIsOrganitzador, DeleteView):
+    model = Events
+    template_name = 'confirm_delete.html'
+    success_url = reverse_lazy('events')
+
+
 def ubicacions(request, format='html'):
-    if request.method == 'POST':
-        nuf = UbiForm(request.POST)
-        u_latitude = request.POST['latitude']
-        u_longitude = request.POST['longitude']
-        u_provincia = request.POST['provincia']
-        u_comarca = request.POST['comarca']
-        u_poble = request.POST['poble']
-        u_adressa = request.POST['adressa']
-        ubi = Ubicacions(latitude=u_latitude, longitude=u_longitude,
-            provincia=u_provincia, comarca=u_comarca,
-            poble=u_poble, adressa=u_adressa)
-        ubi.save()
-        ubi_id = '/ubicacions/' + str(ubi.id) + '/'
-        return HttpResponseRedirect(ubi_id)
+    organitzadors = Organitzadors.objects.all()
+    org = False
+    if request.user in organitzadors:
+        org = True
+    try:
+        ubicacions = Ubicacions.objects.all()
+    except:
+        raise Http404('No hi ha cap ubicacio')
+    if(format == 'html'):
+        variables = Context({
+            'ubicacions': ubicacions,
+            'titlehead': "Llista dubicacions",
+            'pagetitle': 'Ubicacions',
+            'org': org,
+            })
+        nuf = UbiForm()
+        return render_to_response('ubicacions.html',
+            dict(newubiform=nuf),
+            context_instance=RequestContext(request, variables))
     else:
-        organitzadors = Organitzadors.objects.all()
-        org = False
-        if request.user in organitzadors:
-            org = True
-        try:
-            ubicacions = Ubicacions.objects.all()
-        except:
-            raise Http404('No hi ha cap ubicacio')
-        if(format == 'html'):
-            variables = Context({
-                'ubicacions': ubicacions,
-                'titlehead': "Llista dubicacions",
-                'pagetitle': 'Ubicacions',
-                'org': org,
-                })
-            nuf = UbiForm()
-            return render_to_response('ubicacions.html',
-                dict(newubiform=nuf),
-                context_instance=RequestContext(request, variables))
-        else:
-            return formate(format, ubicacions)
+        return formate(format, ubicacions)
 
 
 def ubicacio(request, idUbi, format='html'):
@@ -362,27 +374,6 @@ def ubicacio(request, idUbi, format='html'):
         return formate(format, Ubicacions.objects.filter(id=idUbi))
 
 
-def ubi_update(request, idUbi):
-    ubi = Ubicacions.objects.get(id=idUbi)
-    if request.method == 'POST':
-        nuf = NewUbiForm(request.POST, instance=ubi)
-        ubi.save()
-        ubi_id = '/ubicacions/' + str(ubi.id) + '/'
-        return HttpResponseRedirect(ubi_id)
-    elif request.method == 'GET':
-        variables = Context({
-            'ubicacio': ubi,
-            'titlehead': 'Detalls de la Ubicacio',
-            'pagetitle': ubi.adressa,
-        })
-        nuf = NewUbiForm()
-        return render_to_response('form.html',
-            dict(form=nuf),
-            context_instance=RequestContext(request, variables))
-    else:
-            return Http405()
-
-
 def events(request, format='html'):
     organitzadors = Organitzadors.objects.all()
     org = False
@@ -399,7 +390,10 @@ def events(request, format='html'):
             'pagetitle': 'Events',
             'org': org,
             })
-        return render(request, "events.html", variables)
+        nef = EventForm()
+        return render_to_response('events.html',
+            dict(eventform=nef),
+            context_instance=RequestContext(request, variables))
     else:
         return formate(format, events)
 

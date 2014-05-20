@@ -36,8 +36,8 @@ class UserFormEdit(ModelForm):
 
     class Meta:
         model = Usuaris
-        exclude = ['user']
-        fields = ['username', 'email', 'password', 're_password']
+        #exclude = ['user']
+        #fields = ['username', 'email', 'password', 're_password']
 
     def clean_re_password(self):
         password = self.cleaned_data.get('password')
@@ -47,6 +47,13 @@ class UserFormEdit(ModelForm):
         if password != re_password:
             raise forms.ValidationError("Your passwords do not match")
         return re_password
+
+
+class OrgFormEdit(UserFormEdit):
+    class Meta:
+        model = Organitzadors
+        exclude = ['user']
+        fields = ['username', 'email', 'password', 're_password']
 
 
 class LoginForm(ModelForm):
@@ -68,7 +75,7 @@ class OrgForm(ModelForm):
         fields = ['empresa']
 
 
-class NewFestaForm(ModelForm):
+class FestaForm(ModelForm):
     nom = forms.CharField(label="Nom de la festa")
     data_inici = forms.DateTimeField(label="Data d'inici de la festa")
     data_fi = forms.DateTimeField(label="Data final de la festa")

@@ -31,6 +31,9 @@ class Festes(models.Model):
     def __unicode__(self):
         return self.nom
 
+    def get_absolute_url(self):
+        return reverse('festa_detail', kwargs={'pk': self.pk})
+
 
 class Events(models.Model):
     nom = models.CharField(max_length=50)

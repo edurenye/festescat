@@ -1,9 +1,22 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="col-md-8">
+<div id="LlistaElems" class="col-md-8">
 <h1>Event</h1>
 {% if events %}
     <ul>
+        <form id='formulari' method="PUT" action="delete/">
+            <button class="btn btn-primary" type="submit">
+                <span class="glyphicon glyphicon-remove"> Elimina event</span>
+            </button>
+        </form>
+        <div class="new-button">
+            <form id='formulari' method="PUT" action="edit/">
+                <button class="btn btn-primary" type="submit">
+                {% comment %} onclick="showAddForm()">{% endcomment %}
+                    <span class="glyphicon glyphicon-pencil"> Edita event</span>
+                </button>
+            </form>
+        </div>
         <p>Nom: {{ events.nom }}</p>
         <p>Tipus: {{ events.tipus }}</p>
         <p>Descripcio: {{ events.descripcio }}</p>

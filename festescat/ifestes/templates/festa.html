@@ -2,24 +2,27 @@
 {% block content %}
 <div id="LlistaElems" class="col-md-8">
 <h1>Festa</h1>
-{% if festa %}
+{% if festes %}
     <ul>
-        <form id='formulari' method="DELETE" action="">
+        <form id='formulari' method="PUT" action="delete/">
             <button class="btn btn-primary" type="submit">
                 <span class="glyphicon glyphicon-remove"> Elimina la festa</span>
             </button>
         </form>
         <div class="new-button">
-            <button class="btn btn-primary" type="button" onclick="showAddForm()">
-                <span class="glyphicon glyphicon-pencil"> Edita la Festa</span>
-            </button>
+            <form id='formulari' method="PUT" action="edit/">
+                <button class="btn btn-primary" type="submit">
+                    {% comment %} onclick="showAddForm()">{% endcomment %}
+                    <span class="glyphicon glyphicon-pencil"> Edita la Festa</span>
+                </button>
+            </form>
         </div>
-        <p>Nom: {{ festa.nom }}</p>
-        <p>Data d'inici: {{ festa.data_inici }}</p>
-        <p>Data de finalització: {{ festa.data_fi }}</p>
-        <p>Categoria: {{ festa.categoria}}</p>
-        <p>Descripció: {{ festa.descripcio }}</p>
-        <p>Localitat: {{ festa.localitat }}</p>
+        <p>Nom: {{ festes.nom }}</p>
+        <p>Data d'inici: {{ festes.data_inici }}</p>
+        <p>Data de finalització: {{ festes.data_fi }}</p>
+        <p>Categoria: {{ festes.categoria}}</p>
+        <p>Descripció: {{ festes.descripcio }}</p>
+        <p>Localitat: {{ festes.localitat }}</p>
         {% if events %}
             <h2>Events</h2>
             <ul>
