@@ -2,7 +2,7 @@
 {% block content %}
 <div id="LlistaElems" class="col-md-8">
 <h1>Ubicacio</h1>
-{% if ubicacio %}
+{% if ubicacions %}
     <ul>
         <form id='formulari' method="DELETE" action="">
             <button class="btn btn-primary" type="submit">
@@ -14,12 +14,12 @@
                 <span class="glyphicon glyphicon-pencil"> Edita la Ubicació</span>
             </button>
         </div>
-        <p>Adressa: {{ ubicacio.adressa }}</p>
-        <p>Poble: {{ ubicacio.poble }}</p>
-        <p>Comarca: {{ ubicacio.comarca }}</p>
-        <p>Provincia: {{ ubicacio.provincia }}</p>
-        <p>Latitud: {{ ubicacio.latitude }}</p>
-        <p>Longitud: {{ ubicacio.longitude }}</p>
+        <p>Adressa: {{ ubicacions.adressa }}</p>
+        <p>Poble: {{ ubicacions.poble }}</p>
+        <p>Comarca: {{ ubicacions.comarca }}</p>
+        <p>Provincia: {{ ubicacions.provincia }}</p>
+        <p>Latitud: {{ ubicacions.latitude }}</p>
+        <p>Longitud: {{ ubicacions.longitude }}</p>
     </ul>
 </div>
     <div id="AddForm" class="col-md-6 hidden">
@@ -28,7 +28,7 @@
         <form id='formulari' method="POST" action="">
             {% csrf_token %}
             <table>
-                {{ form.as_table }}
+                {{ newubiform }}
             </table>
             <input type="submit" value="Guarda">
         </form>
@@ -45,10 +45,17 @@
 <div id="AddForm" class="col-md-6 hidden">
     {% if user %}
     <h1>Crea una nova ubicació</h1>
-    <form id='formulari' method="POST" action="">
+    <form id='formulari' action="
+            $.ajax({
+                type: "PUT",
+                url: "",
+                data: $('#AddForm').serialize(),
+                success: function(data, textStatus, jqXHR) {
+                }
+            });">
         {% csrf_token %}
         <table>
-            {{newfestaform}}
+            {{ newubiform }}
         </table>
         <input type="submit" value="Crea">
     </form>

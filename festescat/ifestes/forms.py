@@ -80,7 +80,7 @@ class NewFestaForm(ModelForm):
         model = Festes
 
 
-class NewUbiForm(ModelForm):
+class UbiForm(ModelForm):
     latitude = forms.FloatField()
     longitude = forms.FloatField()
     provincia = forms.CharField(label="Provincia")
@@ -90,5 +90,3 @@ class NewUbiForm(ModelForm):
 
     class Meta:
         model = Ubicacions
-
-

@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 
 # Create your models here.
@@ -14,6 +15,12 @@ class Ubicacions(models.Model):
 
     def __unicode__(self):
         return self.adressa
+
+    def get_absolute_url(self):
+        print(self.pk)
+        print(self.id)
+        print("hola")
+        return reverse('ubicacio_detail', kwargs={'pk': self.pk})
 
 
 class Festes(models.Model):

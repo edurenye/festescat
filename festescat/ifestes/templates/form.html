@@ -1,6 +1,6 @@
 <div id="AddForm" class="col-md-8">
     {% if user %}
-    <h1>Edita</h1>
+    <h1>{{ fromtitle }}</h1>
     <form id='formulari' method="POST" action="">
         {% csrf_token %}
         <table>
