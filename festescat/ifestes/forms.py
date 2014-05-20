@@ -1,4 +1,4 @@
-from ifestes.models import Usuaris, Organitzadors, Festes, Ubicacions
+from ifestes.models import *
 from django.forms import ModelForm
 from django import forms
 
@@ -81,12 +81,10 @@ class NewFestaForm(ModelForm):
 
 
 class UbiForm(ModelForm):
-    latitude = forms.FloatField()
-    longitude = forms.FloatField()
-    provincia = forms.CharField(label="Provincia")
-    comarca = forms.CharField(label="Comarca")
-    poble = forms.CharField(label="Poble")
-    adressa = forms.CharField(label="Adressa")
-
     class Meta:
         model = Ubicacions
+
+
+class EventForm(ModelForm):
+    class Meta:
+        model = Events

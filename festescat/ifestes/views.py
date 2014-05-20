@@ -2,7 +2,7 @@
 
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.views.generic import DetailView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.template import Context, RequestContext
 from django.template.loader import get_template
 from django.contrib.auth import login, authenticate, logout
@@ -11,6 +11,7 @@ from django.utils.decorators import method_decorator
 from django.shortcuts import render, render_to_response
 from django.core import serializers
 from django.core.exceptions import PermissionDenied
+from django.core.urlresolvers import reverse_lazy
 from ifestes.models import *
 from ifestes.forms import *
 
@@ -280,13 +281,25 @@ class UbicacioDetail(DetailView):
     template_name = 'ubicacio.html'
 
 
+class UbicacioDelete(LoginRequiredMixin, CheckIsOrganitzador, DeleteView):
+    model = Ubicacions
+    template_name = 'confirm_delete.html'
+    success_url = reverse_lazy('ubicacions')
+
+
 class LoginRequiredCheckIsOrganitzadorCreateView(LoginRequiredMixin,
     CheckIsOrganitzador, CreateView):
         template_name = 'form.html'
 
 
-class LoginRequiredCheckIsOrganitzadorUpdateView(UpdateView):
+class LoginRequiredCheckIsOrganitzadorUpdateView(LoginRequiredMixin,
+    CheckIsOrganitzador, UpdateView):
         template_name = 'form.html'
+
+
+class EventDetail(DetailView):
+    model = Events
+    template_name = 'event.html'
 
 
 def ubicacions(request, format='html'):

@@ -15,6 +15,8 @@ urlpatterns = patterns('',
     url(r'^register/$', register),
     url(r'^festes/$', festes, name='festes'),
     url(r'^festes/(\d+)/$', festa),
+
+    #Ubicacions
     url(r'^ubicacions/$', ubicacions, name='ubicacions'),
     url(r'^ubicacions/(?P<pk>\d+)/$',
         UbicacioDetail.as_view(),
@@ -27,8 +29,22 @@ urlpatterns = patterns('',
         LoginRequiredCheckIsOrganitzadorCreateView.as_view(model=Ubicacions,
             form_class=UbiForm),
         name='ubicacio_create'),
+    url(r'^ubicacions/(?P<pk>\d+)/delete/$',
+        UbicacioDelete.as_view(), name='ubicacio_delete'),
+
+    #Events
     url(r'^events/$', events, name='events'),
-    url(r'^events/(\d+)/$', event),
+    url(r'^events/(?P<pk>\d+)/$',
+        EventDetail.as_view(),
+        name='event_detail'),
+    url(r'^events/(?P<pk>\d+)/edit/$',
+        LoginRequiredCheckIsOrganitzadorUpdateView.as_view(model=Events,
+            form_class=EventForm),
+        name='event_edit'),
+    url(r'^events/(?P<pk>\d+)/create/$',
+        LoginRequiredCheckIsOrganitzadorCreateView.as_view(model=Events,
+            form_class=EventForm),
+        name='event_create'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

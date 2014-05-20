@@ -2,14 +2,14 @@
 {% block content %}
 <div class="col-md-8">
 <h1>Event</h1>
-{% if event %}
+{% if events %}
     <ul>
-        <p>Nom: {{ event.nom }}</p>
-        <p>Tipus: {{ event.tipus }}</p>
-        <p>Descripcio: {{ event.descripcio }}</p>
-        <a href="/festes/{{event.festa.id}}/"><p>Festa: {{ event.festa.nom}}</p></a>
-        <a href="/ubicacions/{{event.ubicacio.id}}/"><p>Ubicació: {{ event.ubicacio.adressa }}</p></a>
-        <p>Data: {{ event.data }}</p>
+        <p>Nom: {{ events.nom }}</p>
+        <p>Tipus: {{ events.tipus }}</p>
+        <p>Descripcio: {{ events.descripcio }}</p>
+        <a href="/festes/{{events.festa.id}}/"><p>Festa: {{ events.festa.nom}}</p></a>
+        <a href="/ubicacions/{{events.ubicacio.id}}/"><p>Ubicació: {{ events.ubicacio.adressa }}</p></a>
+        <p>Data: {{ events.data }}</p>
     </ul>
 {% else %}
     <p>No existeix aquest event.</p>
