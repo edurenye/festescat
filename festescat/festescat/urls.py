@@ -53,16 +53,17 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     #RESTfull API
-    '''url(r'^api/ubicacions/$', APIUbicacionsList.as_view(), name='ubi-list'),
-    url(r'^api/ubicacions/(?P<pk>\d+)/$', APIUbicacioDetail.as_view(),
-        name='ubi-detail'),'''
+    #url(r'^api/ubicacions/$', APIUbicacionsList.as_view(), name='ubi-list'),
+    #url(r'^api/ubicacions/(?P<pk>\d+)/$', APIUbicacioDetail.as_view(),
+        #name='ubi-detail'),
 
 )
 
 format_urlpatterns = patterns('',
     url(r'^festes\.(?P<format>[a-z0-9]+)$', festes, name='festes'),
     url(r'^festes/(?P<idFesta>\d+)\.(?P<format>[a-z0-9]+)$', festa),
-    url(r'^ubicacions\.(?P<format>[a-z0-9]+)$', ubicacions, name='ubicacions'),
+    url(r'^ubicacions\.(?P<format>[a-z0-9]+)$', ubicacions,
+        name='ubicacions-rest'),
     url(r'^ubicacions/(?P<idUbi>\d+)\.(?P<format>[a-z0-9]+)$', ubicacio),
     url(r'^events\.(?P<format>[a-z0-9]+)$', events, name='events'),
     url(r'^events/(?P<idEvent>\d+)\.(?P<format>[a-z0-9]+)$', event),
