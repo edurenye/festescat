@@ -347,7 +347,7 @@ def ubicacions(request, format='html'):
             })
         nuf = UbiForm()
         return render_to_response('ubicacions.html',
-            dict(newubiform=nuf),
+            dict(ubiform=nuf),
             context_instance=RequestContext(request, variables))
     else:
         return formate(format, ubicacions)
