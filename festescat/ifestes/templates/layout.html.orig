@@ -46,13 +46,13 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             {% if user.username %}
-<<<<<<< .merge_file_aOru1p
-				{% ifusergroup Organitzadors %}
+<<<<<<< .merge_file_6BCWgk
+                {% ifusergroup Organitzadors %}
                 <li><a href="/user/{{user.username}}/">{{user.username}}</a></li>
                 {% else %}
 =======
                 {% if user.objects.filter(group__name='Organitzadors') %}
->>>>>>> .merge_file_4Bsc3p
+>>>>>>> .merge_file_qJsbKj
                 <li><div class="btn-group">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">{{user.username}} <span class="caret"></span>
                     </button>
@@ -61,7 +61,7 @@
                         <li><a href="/user/{{user.username}}/org/">Fes-te organitzador</a></li>
                     </ul>
                 </div></li>
-				{% endifusergroup %}
+                {% endifusergroup %}
                 <li><a href="/logout/">LOGOUT</a></li>
             {% else %}
                 <li><a href="/register/">REGISTRAT</a></li>

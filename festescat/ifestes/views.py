@@ -7,6 +7,7 @@ from django.template import Context, RequestContext
 from django.template.loader import get_template
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import Group
 from django.utils.decorators import method_decorator
 from django.shortcuts import render, render_to_response
 from django.core import serializers
@@ -80,6 +81,8 @@ def org(request, username):
         org.empresa = empresa
         user.delete()
         org.save()
+        g = Group.objects.get(name='Organitzadors')
+        g.user_set.add(org)
         return HttpResponseRedirect('/')
     else:
         variables = Context({
@@ -137,6 +140,8 @@ def register(request):
                 user_password)
             user.set_password(user_password)
             user.save()
+            g = Group.objects.get(name='Usuaris')
+            g.user_set.add(user)
             user = authenticate(username=user_username, password=user_password)
             login(request, user)
             return HttpResponseRedirect('/')

@@ -20,6 +20,9 @@
         <ul>
             <li><p>{{ user.username }}</p></li>
             <li><p>{{ user.email }}</p></li>
+            {% if user.is_staff %}
+                <li><p>Ets un Organitzador</p></li>
+            {% endif %}
         <form id='formulari' method="PUT" action="edit/">
             <input type="submit" value="Edita">
         </form>
