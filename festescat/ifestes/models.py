@@ -51,7 +51,7 @@ class Events(models.Model):
 
 
 class Usuaris(User):
-    assistencia = models.ManyToManyField(Events)
+    assistencia = models.ManyToManyField(Festes)
 
     def __unicode__(self):
         return self.username

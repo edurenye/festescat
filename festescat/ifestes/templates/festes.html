@@ -1,34 +1,33 @@
 {% extends "layout.html" %}
+{% load ifusergroup %}
 {% block content %}
 <div id="LlistaElems" class="col-md-8">
 <h1>Totes les festes</h1>
-    {% comment %}
-{% if org %}
-    {% endcomment %}
+{% ifusergroup Organitzadors %}
 <div class="new-button">
     <button class="btn btn-primary" type="button" onclick="showAddForm()">
         <span class="glyphicon glyphicon-plus"> Nova Festa</span>
     </button>
 </div>
-    {% comment %}
-{% endif %}
-    {% endcomment %}
+{% endifusergroup %}
 {% if festes %}
     <ul>
         {% for festa in festes %}
-	<div class="container-fluid">
+        <div class="container-fluid">
         <div class="row">
             <div class="col-md-8">
                 <li><p><a href="/festes/{{festa.id}}/"><h3>{{festa.nom}}</h3></a></p></li>
             </div>
-            {%if festa not in assis %}
+            {%if festa not in assis and user %}
             <div class="col-md-4">
-                <button class="btn btn-primary asis-button">
-                    <span class="glyphicon glyphicon-ok"> Participa-hi</span>
-                </button>
+                <form id='formulari' method="POST" action="/festes/{{festa.id}}/assist/">
+                    <button class="btn btn-primary asis-button" type="submit">
+                        <span class="glyphicon glyphicon-ok"> Participa-hi</span>
+                    </button>
+                </form>
             </div>
             {% endif %}
-	    </div>
+            </div>
         </div>
         </div>
         {% endfor %}
@@ -38,7 +37,6 @@
 {% endif %}
 </div>
 <div id="AddForm" class="col-md-6 hidden">
-{% if user %}
     <h1>Crea una nova festa</h1>
     <form id='formulari' method="POST" action="">
         {% csrf_token %}
@@ -47,6 +45,5 @@
         </table>
         <input type="submit" value="Crea">
     </form>
-{% endif %}
 </div>
 {% endblock %}

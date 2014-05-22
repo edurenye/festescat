@@ -75,8 +75,10 @@ def org(request, username):
         of = OrgForm(request.POST, prefix='org')
         user = Usuaris.objects.get(username=username)
         empresa = request.POST['org-empresa']
-        org = Organitzadors(usuaris_ptr=user, username=user.username,
-            password=user.password, empresa=empresa)
+        org = Organitzadors.objects.create_user(user.username, user.email,
+            user.password)
+        org.empresa = empresa
+        user.delete()
         org.save()
         return HttpResponseRedirect('/')
     else:
@@ -133,7 +135,6 @@ def register(request):
             user_password = request.POST['user-password']
             user = Usuaris.objects.create_user(user_username, user_email,
                 user_password)
-            #user = uf.models
             user.set_password(user_password)
             user.save()
             user = authenticate(username=user_username, password=user_password)
@@ -263,7 +264,16 @@ def festa(request, idFesta, format='html'):
             else:
                 return formate(format, Festes.objects.filter(id=idFesta))
     else:
-        return Http405()
+        return HttpResponseNotAllowed()
+
+
+def assist(request, idFesta):
+    if request.method == 'POST':
+        festa = Festes.objects.get(id=idFesta)
+        user.assistencia.add(festa)
+        user.save()
+    else:
+        return HttpResponseNotAllowed()
 
 
 class UserUpdateView(LoginRequiredMixin, UpdateView):
