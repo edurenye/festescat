@@ -46,6 +46,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             {% if user.username %}
+<<<<<<< .merge_file_YfVaG3
 <<<<<<< .merge_file_aOru1p
 				{% ifusergroup Organitzadors %}
                 <li><a href="/user/{{user.username}}/">{{user.username}}</a></li>
@@ -53,6 +54,9 @@
 =======
                 {% if user.objects.filter(group__name='Organitzadors') %}
 >>>>>>> .merge_file_4Bsc3p
+=======
+                {% if user.objects.filter(group__name='Organitzadors') %}
+>>>>>>> .merge_file_GFDU92
                 <li><div class="btn-group">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">{{user.username}} <span class="caret"></span>
                     </button>
