@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load ifusergroup %}
 <!doctype html>
 <html>
     <head>
@@ -46,13 +47,9 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             {% if user.username %}
-<<<<<<< .merge_file_Homm4z
                 {% ifusergroup Organitzadors %}
                 <li><a href="/user/{{user.username}}/">{{user.username}}</a></li>
                 {% else %}
-=======
-                {% if user.objects.filter(group__name='Organitzadors') %}
->>>>>>> .merge_file_320fzz
                 <li><div class="btn-group">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">{{user.username}} <span class="caret"></span>
                     </button>

@@ -1,13 +1,26 @@
 {% extends "layout.html" %}
+{% load ifusergroup %}
 {% block content %}
     <div class="col-md-6">
         <h1>Asistencies de {{ username }}</h1>
-        {% if events %}
+        {% if festes %}
         <ul>
-        {% for event in events %}
+        {% for festa in festes %}
         <li>
-        <h2>{{event.nom}}</h2>
-        <p><a href="/events/{{event.id}}/">{{ event.tipus}} - {{ event.nom }}</a></p>
+        <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <h2>{{festa.nom}}</h2>
+                <p><a href="/festes/{{festa.id}}/">{{ festa.categoria}} - {{ festa.data_inici }}</a></p>
+            </div>
+            <div class="col-md-4">
+                <form id='formulari' method="POST" action="/festes/{{festa.id}}/no_assist/">
+                    {% csrf_token %}
+                    <button class="btn btn-primary asis-button" type="submit">
+                        <span class="glyphicon glyphicon-remove"> No Assistire</span>
+                    </button>
+                </form>
+            </div>
         </li>
         {% endfor %}
         </ul>
@@ -20,9 +33,9 @@
         <ul>
             <li><p>{{ user.username }}</p></li>
             <li><p>{{ user.email }}</p></li>
-            {% if user.is_staff %}
+            {% ifusergroup Organitzadors %}
                 <li><p>Ets un Organitzador</p></li>
-            {% endif %}
+            {% endifusergroup %}
         <form id='formulari' method="PUT" action="edit/">
             <input type="submit" value="Edita">
         </form>

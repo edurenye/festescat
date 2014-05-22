@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% load ifusergroup %}
 {% block content %}
-<div id="LlistaElems" class="col-md-8">
+<div id="LlistaElems" class="col-md-6">
 <h1>Totes les festes</h1>
 {% ifusergroup Organitzadors %}
 <div class="new-button">
@@ -21,6 +21,7 @@
             {%if festa not in assis and user %}
             <div class="col-md-4">
                 <form id='formulari' method="POST" action="/festes/{{festa.id}}/assist/">
+                    {% csrf_token %}
                     <button class="btn btn-primary asis-button" type="submit">
                         <span class="glyphicon glyphicon-ok"> Participa-hi</span>
                     </button>

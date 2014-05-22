@@ -14,12 +14,12 @@ urlpatterns = patterns('',
 
     #Users
     url(r'^user/(\w+)/$', userpage),
-    url(r'^user/(?P<slug>\w+)/edit/$', UserUpdateView.as_view(),
+    url(r'^user/(\w+)/edit/$', UserUpdateView.as_view(),
         name='user_edit'),
 
     #Organitzadors
     url(r'^user/(\w+)/org/$', org),
-    url(r'^user/(?P<slug>\w+)/org/edit/$', OrganitzadorUpdateView.as_view(),
+    url(r'^user/(\w+)/org/edit/$', OrganitzadorUpdateView.as_view(),
         name='org_edit'),
 
     #Festes
@@ -31,7 +31,8 @@ urlpatterns = patterns('',
         LoginRequiredCheckIsOrganitzadorUpdateView.as_view(model=Festes,
             form_class=FestaForm),
         name='festa_edit'),
-    url(r'^festes/(?P<pk>\d+)/assist/$', assist, name='assist'),
+    url(r'^festes/(?P<idFesta>\d+)/assist/$', assist, name='assist'),
+    url(r'^festes/(?P<idFesta>\d+)/no_assist/$', no_assist, name='no_assist'),
     url(r'^festes/create/$',
         LoginRequiredCheckIsOrganitzadorCreateView.as_view(model=Festes,
             form_class=FestaForm),

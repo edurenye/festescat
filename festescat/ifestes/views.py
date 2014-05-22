@@ -9,7 +9,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 from django.utils.decorators import method_decorator
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render, render_to_response, get_object_or_404
 from django.core import serializers
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse_lazy
@@ -60,11 +60,11 @@ def userpage(request, username):
             print(user)
         except:
             raise Http404('User not found.')
-        events = user.assistencia.all()
+        festes = user.assistencia.all()
         variables = Context({
             'user': request.user,
             'username': username,
-            'events': events
+            'festes': festes
             })
         return render_to_response('userpage.html',
             dict(userform=uf),
@@ -76,10 +76,9 @@ def org(request, username):
         of = OrgForm(request.POST, prefix='org')
         user = Usuaris.objects.get(username=username)
         empresa = request.POST['org-empresa']
-        org = Organitzadors.objects.create_user(user.username, user.email,
-            user.password)
+        org = Organitzadors(usuaris_ptr=user, username=user.username,
+            email=user.email, password=user.password, empresa=empresa)
         org.empresa = empresa
-        user.delete()
         org.save()
         g = Group.objects.get(name='Organitzadors')
         g.user_set.add(org)
@@ -274,21 +273,39 @@ def festa(request, idFesta, format='html'):
 
 def assist(request, idFesta):
     if request.method == 'POST':
+        user = Usuaris.objects.get(username=request.user.username)
         festa = Festes.objects.get(id=idFesta)
         user.assistencia.add(festa)
         user.save()
+        return HttpResponseRedirect('/festes/')
     else:
         return HttpResponseNotAllowed()
 
 
-class UserUpdateView(LoginRequiredMixin, UpdateView):
+def no_assist(request, idFesta):
+    if request.method == 'POST':
+        user = Usuaris.objects.get(username=request.user.username)
+        festa = Festes.objects.get(id=idFesta)
+        user.assistencia.remove(festa)
+        return HttpResponseRedirect('/festes/')
+    else:
+        return HttpResponseNotAllowed()
+
+
+class UserUpdateView(UpdateView):
     model = Usuaris
     template_name = 'form.html'
+
+    def get_object(self):
+        return get_object_or_404(User, pk=self.request.user.pk)
 
 
 class OrganitzadorUpdateView(LoginRequiredMixin, UpdateView):
     model = Organitzadors
     template_name = 'form.html'
+
+    def get_object(self):
+        return get_object_or_404(User, pk=self.request.user.pk)
 
 
 class FestaDetail(DetailView):
