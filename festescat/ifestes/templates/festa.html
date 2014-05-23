@@ -1,71 +1,57 @@
 {% extends "layout.html" %}
+{% load ifusergroup %}
 {% block content %}
 <div id="LlistaElems" class="col-md-8">
 <h1>Festa</h1>
 {% if festes %}
-    <ul>
-        <form id='formulari' method="PUT" action="delete/">
+    {% ifusergroup Organitzadors %}
+    <form id='formulari' method="PUT" action="delete/">
+        <button class="btn btn-primary" type="submit">
+            <span class="glyphicon glyphicon-remove"> Elimina la festa</span>
+        </button>
+    </form>
+    <div class="new-button">
+        <form id='formulari' method="PUT" action="edit/">
             <button class="btn btn-primary" type="submit">
-                <span class="glyphicon glyphicon-remove"> Elimina la festa</span>
+                {% comment %} onclick="showAddForm()">{% endcomment %}
+                <span class="glyphicon glyphicon-pencil"> Edita la Festa</span>
             </button>
         </form>
-        <div class="new-button">
-            <form id='formulari' method="PUT" action="edit/">
-                <button class="btn btn-primary" type="submit">
-                    {% comment %} onclick="showAddForm()">{% endcomment %}
-                    <span class="glyphicon glyphicon-pencil"> Edita la Festa</span>
-                </button>
-            </form>
+    </div>
+    {% endifusergroup %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <p>Nom: {{ festes.nom }}</p>
+                <p>Data d'inici: {{ festes.data_inici }}</p>
+                <p>Data de finalització: {{ festes.data_fi }}</p>
+                <p>Categoria: {{ festes.categoria}}</p>
+                <p>Descripció: {{ festes.descripcio }}</p>
+                <p>Localitat: {{ festes.localitat }}</p>
+                {% if events %}
+                <h2>Events</h2>
+                    <ul>
+                    {% for event in events %}
+                        <li><p><a href="/events/{{event.id}}/"><h3>{{event.nom}}</h3></a></p></li>
+                    {% endfor %}
+                    </ul>
+                {% else %}
+                <p>No hi ha cap event</p>
+                {% endif %}
+            </div>
+            <div class="col-md-4">
+                <form id='formulari' method="POST" action="/festes/{{festes.id}}/assist/">
+                    {% csrf_token %}
+                    <button class="btn btn-primary asis-button" type="submit">
+                        <span class="glyphicon glyphicon-ok"> Participa-hi</span>
+                    </button>
+                </form>
+            </div>
         </div>
-        <p>Nom: {{ festes.nom }}</p>
-        <p>Data d'inici: {{ festes.data_inici }}</p>
-        <p>Data de finalització: {{ festes.data_fi }}</p>
-        <p>Categoria: {{ festes.categoria}}</p>
-        <p>Descripció: {{ festes.descripcio }}</p>
-        <p>Localitat: {{ festes.localitat }}</p>
-        {% if events %}
-            <h2>Events</h2>
-            <ul>
-            {% for event in events %}
-                <li><p><a href="/events/{{event.id}}/"><h3>{{event.nom}}</h3></a></p></li>
-            {% endfor %}
-            </ul>
-        {% else %}
-            <p>No hi ha cap event</p>
-        {% endif %}
-    </ul>
-</div>
-<div id="AddForm" class="col-md-6 hidden">
-    {% if user %}
-    <h1>Edita la festa</h1>
-    <form id='formulari' method="PUT" action="">
-        {% csrf_token %}
-        <table>
-            {{newfestaform}}
-        </table>
-        <input type="submit" value="Guarda">
-    </form>
-    {% endif %}
+    </div>
 </div>
 {% else %}
     <p>No existeix aquesta festa.</p>
-    <div class="new-button">
-        <button class="btn btn-primary" type="button" onclick="showAddForm()">
-            <span class="glyphicon glyphicon-plus"> Nova Festa</span>
-        </button>
-    </div>
-</div>
-<div id="AddForm" class="col-md-6 hidden">
-    {% if user %}
-    <h1>Crea una nova festa</h1>
-    <form id='formulari' method="PUT" action="">
-        {% csrf_token %}
-        <table>
-            {{newfestaform}}
-        </table>
-        <input type="submit" value="Crea">
-    </form>
-    {% endif %}
 </div>
 {% endif %}
 {% endblock %}

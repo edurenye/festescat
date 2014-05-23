@@ -1,9 +1,11 @@
 {% extends "layout.html" %}
+{% load ifusergroup %}
 {% block content %}
 <div id="LlistaElems" class="col-md-8">
 <h1>Event</h1>
 {% if events %}
     <ul>
+        {% ifusergroup Organitzadors %}
         <form id='formulari' method="PUT" action="delete/">
             <button class="btn btn-primary" type="submit">
                 <span class="glyphicon glyphicon-remove"> Elimina event</span>
@@ -17,6 +19,7 @@
                 </button>
             </form>
         </div>
+        {% endifusergroup %}
         <p>Nom: {{ events.nom }}</p>
         <p>Tipus: {{ events.tipus }}</p>
         <p>Descripcio: {{ events.descripcio }}</p>

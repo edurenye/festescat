@@ -2,12 +2,22 @@
 {% load ifusergroup %}
 {% block content %}
 <div id="LlistaElems" class="col-md-8">
-    <h1>Totes les ubicacions</h1>
-    <div class="new-button">
-        <button class="btn btn-primary" type="button" onclick="showAddForm()">
-            <span class="glyphicon glyphicon-plus"> Nova Ubicació</span>
-        </button>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <h1>Totes les ubicacions</h1>
+            </div>
+            {% ifusergroup Organitzadors %}
+            <div class="col-md-4">
+                <div class="new-button">
+                    <button class="btn btn-primary" type="button" onclick="showAddForm()">
+                        <span class="glyphicon glyphicon-plus"> Nova Ubicació</span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
+    {% endifusergroup %}
     {% if ubicacions %}
         <ul>
             {% for ubicacio in ubicacions %}

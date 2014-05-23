@@ -1,9 +1,11 @@
 {% extends "layout.html" %}
+{% load ifusergroup %}
 {% block content %}
 <div id="LlistaElems" class="col-md-8">
 <h1>Ubicacio</h1>
 {% if ubicacions %}
     <ul>
+        {% ifusergroup Organitzadors %}
         <form id='formulari' method="PUT" action="delete/">
             <button class="btn btn-primary" type="submit">
                 <span class="glyphicon glyphicon-remove"> Elimina la Ubicació</span>
@@ -17,6 +19,7 @@
                 </button>
             </form>
         </div>
+        {% endifusergroup %}
         <p>Adressa: {{ ubicacions.adressa }}</p>
         <p>Poble: {{ ubicacions.poble }}</p>
         <p>Comarca: {{ ubicacions.comarca }}</p>
@@ -39,30 +42,6 @@
     </div>
 {% else %}
     <p>No existeix la ubicació</p>
-    <div class="new-button">
-        <button class="btn btn-primary" type="button" onclick="showAddForm()">
-            <span class="glyphicon glyphicon-plus"> Nova Ubicació</span>
-        </button>
-    </div>
-</div>
-<div id="AddForm" class="col-md-6 hidden">
-    {% if user %}
-    <h1>Crea una nova ubicació</h1>
-    <form id='formulari' action="
-            $.ajax({
-                type: "PUT",
-                url: "",
-                data: $('#AddForm').serialize(),
-                success: function(data, textStatus, jqXHR) {
-                }
-            });">
-        {% csrf_token %}
-        <table>
-            {{ newubiform }}
-        </table>
-        <input type="submit" value="Crea">
-    </form>
-    {% endif %}
 </div>
 {% endif %}
 {% endblock %}
