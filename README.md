@@ -21,54 +21,94 @@ Tota aquesta informacio esta disponible ens els formats: JSON,HTML i XML
 	
 	<tr>
 	  <td>GET</td>
-	  <td>/festes</td>
+	  <td>/api/festes</td>
 	  <td>Totes les festes disponibles</td>
 	</tr>
 
 	<tr>
-	  <td>GET</td>
-	  <td>/festes/ID</td>
-	  <td>Informacio d'una fesa en concret</td>
+	  <td>POST</td>
+	  <td>/api/festes</td>
+	  <td>Afegir una festa</td>
 	</tr>
 
 	<tr>
 	  <td>GET</td>
-	  <td>/events</td>
+	  <td>/api/festes/ID</td>
+	  <td>Informacio d'una festa en concret</td>
+	</tr>
+
+	<tr>
+	  <td>PUT</td>
+	  <td>/api/festes/ID</td>
+	  <td>Afegir o modificar una festa</td>
+	</tr>
+
+	<tr>
+	  <td>DELETE</td>
+	  <td>/api/festes/ID</td>
+	  <td>Elimina una festa</td>
+	</tr>
+
+	<tr>
+	  <td>GET</td>
+	  <td>/api/events</td>
 	  <td>Tots els events disponibles</td>
 	</tr>
 
 	<tr>
+	  <td>POST</td>
+	  <td>/api/events</td>
+	  <td>Afegir un event</td>
+	</tr>
+
+	<tr>
 	  <td>GET</td>
-	  <td>/events/ID</td>
+	  <td>/api/events/ID</td>
 	  <td>Informacio d'un event</td>
 	</tr>
 
 	<tr>
+	  <td>PUT</td>
+	  <td>/api/events/ID</td>
+	  <td>Afegir o modificar un event</td>
+	</tr>
+
+	<tr>
+	  <td>DELETE</td>
+	  <td>/api/events/ID</td>
+	  <td>Elimina un event</td>
+	</tr>
+
+	<tr>
 	  <td>GET</td>
-	  <td>/ubicacions</td>
+	  <td>/api/ubicacions</td>
 	  <td>Totes les ubicacions disponibles</td>
 	</tr>
 
 	<tr>
+	  <td>POST</td>
+	  <td>/api/ubicacions</td>
+	  <td>Afegir una ubicacio</td>
+	</tr>
+
+	<tr>
 	  <td>GET</td>
-	  <td>/ubicacions/ID</td>
+	  <td>/api/ubicacions/ID</td>
 	  <td>Informacio de una ubicacio</td>
 	</tr>
 
 	<tr>
-	  <td>GET</td>
-	  <td>/</td>
-	  <td>Pagina Principal</td>
+	  <td>PUT</td>
+	  <td>/api/ubicacions/ID</td>
+	  <td>Afegir o modificar una ubicacio</td>
 	</tr>
 
 	<tr>
-	  <td>GET</td>
-	  <td>/user/username</td>
-	  <td>Pagina d'usuari amb els events que te</td>
+	  <td>DELETE</td>
+	  <td>/api/ubicacions/ID</td>
+	  <td>Elimina una ubicacio</td>
 	</tr>
 
-
-   
 </table>
 </body>
 </html>

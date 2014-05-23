@@ -8,7 +8,9 @@ festes.cat
 
 Aplicacio desenvolupada per Eduard Renye i Victor Diaz
 
-FESTES - EVENTS - UBICACIONS
+FESTES - EVENTS - UBICACIONS - USUARIS
+-----------------------------------------------------------
+Tota aquesta informacio esta disponible ens els formats: JSON,HTML i XML 
 
 <table>
 	<tr>
@@ -65,7 +67,7 @@ FESTES - EVENTS - UBICACIONS
 	  <td>Pagina d'usuari amb els events que te</td>
 	</tr>
 
-> Tota aquesta informacio esta disponible ens els formats: JSON,HTML i XML 
+
    
 </table>
 </body>
