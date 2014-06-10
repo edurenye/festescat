@@ -38,6 +38,22 @@
                 {% else %}
                 <p>No hi ha cap event</p>
                 {% endif %}
+                <div id="reviews">
+                    <h3>Reviews</h3>
+                    {% if festes.festareview_set.all %}
+                        <span rel="aggregateRating">
+                            <p typeof="AggregateRating">
+                                <strong>Global rate: {{mitja}}</strong>
+                                <span property="ratingValue">{{festa.averageRating|stringformat:".1f"}}<span>
+                    {% endif %}
+                    {% for review in festes.festareview_set.all %}
+                        <p rel="reviewRating" typeof="Rating">
+                            Rating: {{ review.rating}}
+                        </p>
+                    {% empty %}
+                        <p>No hi ha reviews</p>
+                    {% endfor %}
+                </div>
             </div>
             <div class="col-md-4">
                 <form id='formulari' method="POST" action="/festes/{{festes.id}}/assist/">

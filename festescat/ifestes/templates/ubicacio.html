@@ -4,6 +4,7 @@
 <div id="LlistaElems" class="col-md-8">
 <h1>Ubicacio</h1>
 {% if ubicacions %}
+    <span vocab="http://schema.org/" typeof="Place">
     <ul>
         {% ifusergroup Organitzadors %}
         <form id='formulari' method="PUT" action="delete/">
@@ -20,13 +21,24 @@
             </form>
         </div>
         {% endifusergroup %}
+        <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+            <meta itemprop="addressCountry" content="ES"/>
+            <meta itemprop="addressLocality" content="{{ ubicacions.poble }}"/>
+            <meta itemprop="addressRegion" content="Catalunya"/>
+            <meta itemprop="streetAddress" content="{{ ubicacions.adressa }}"/>
+        </span>
         <p>Adressa: {{ ubicacions.adressa }}</p>
         <p>Poble: {{ ubicacions.poble }}</p>
         <p>Comarca: {{ ubicacions.comarca }}</p>
         <p>Provincia: {{ ubicacions.provincia }}</p>
+        <span itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates">
+            <meta itemprop="latitude" content="{{ ubicacions.latitude }}"/>
+            <meta itemprop="longitude" content="{{ ubicacions.longitude }}"/>
+        </span>
         <p>Latitud: {{ ubicacions.latitude }}</p>
         <p>Longitud: {{ ubicacions.longitude }}</p>
     </ul>
+    </span>
 </div>
     <div id="AddForm" class="col-md-6 hidden">
         {% if user %}

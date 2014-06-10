@@ -2,12 +2,38 @@
 {% block content %}
     <div class="col-md-8">
     <h1>{{ pagetitle }}</h1>
+    <script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: new google.maps.LatLng(-34.397, 150.644),
+          zoom: 8
+        };
+        var map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+    <div id="map-canvas"/>
     {% if user.username %}
     <p>Benvingut {{ user.username }}!
     Aquí podrà veure les festes de catalunya!</p>
     <a href="/festes/"><h2>Accedeix a totes les festes</h2></a>
     <a href="/user/{{ user.username}}/"><h3>Accedeix als teus events</h3></a>
     {% else %}
+    <div id="map"></div>
+    <!--<script type="text/javascript">
+        var map;
+        $(document).ready(function(){
+            map = new GMaps({
+                div: '#map',
+                lat: -12.043333,
+                lng: -77.028333
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        var map = new FacilMap.Map("map");
+    </script>-->
     <p>Obligatori fer <a href="/login/">sign in</a> per poder accedir al contingut.</p>
     <p>O <a href="/register/">Registrat</a> en cas de ser un usuari nou.</p>
     {% endif %}

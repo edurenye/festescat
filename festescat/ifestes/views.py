@@ -258,13 +258,35 @@ def festa(request, idFesta, format='html'):
                 dict(newfestaform=nff),
                 context_instance=RequestContext(request, variables))
         else:
+            mitja = 0.0
+            canAddReview = 0
+            reviews = FestaReview.objects.get(Festa=idFesta)
+            RATING_CHOICES = FestaReview.RATING_CHOICES
             organitzadors = Organitzadors.objects.all()
             org = False
+            if(len(reviews) != 0):
+                for review in reviews:
+                    mitja = mitja + review.rating
+                    if(user.id == review.user.id):
+                        canAddReview = 1
+                mitja = mitja / (len(reviews))
             if request.user in organitzadors:
                 org = True
             festa = Festes.objects.get(id=idFesta)
             if(format == 'html'):
+                variables = Context({
+                    'titlehead': 'Gestor de Festes',
+                    'pagetitle': 'Festes',
+                    'org': org,
+                    'festa': festa,
+                    'reviews': reviews,
+                    'RATING_CHOICES': RATING_CHOICES,
+                    'mitja': mitja,
+                    'canAddReview': canAddReview,
+                })
                 return HttpResponseRedirect('/festes/' + str(idFesta) + '/')
+                return render_to_response('festa.html',
+                context_instance=RequestContext(request, variables))
             else:
                 return formate(format, Festes.objects.filter(id=idFesta))
     else:
