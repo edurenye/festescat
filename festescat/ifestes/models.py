@@ -6,6 +6,10 @@ from datetime import date
 # Create your models here.
 
 
+def get_default_user():
+    return User.objects.get(pk=1)
+
+
 class Ubicacions(models.Model):
     latitude = models.FloatField()
     longitude = models.FloatField()
@@ -49,7 +53,7 @@ class Review(models.Model):
     rating = models.PositiveSmallIntegerField('Rating(stars)', blank=False,
         default=3, choices=RATING_CHOICES)
     comment = models.TextField(blank=True, null=True)
-    user = models.ForeignKey(User, default=User.objects.get(id=1))
+    user = models.ForeignKey(User, default=get_default_user)
     date = models.DateField(default=date.today)
 
     class  Meta:
