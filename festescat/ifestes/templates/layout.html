@@ -3,7 +3,11 @@
 <!doctype html>
 <html>
     <head>
+    {% if titlehead %}
     <title>{{ titlehead }}</title>
+    {% else %}
+    <title>Festes.cat</title>
+    {% endif %}
     <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
     <link rel="stylesheet" href="{% static "css/style.css" %}">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
@@ -17,6 +21,9 @@
     </script>
     <script type="text/javascript" src="http://api.facilmap.org/facilmap.js"></script>
     <!--<script type="text/javascript" src="{% static "js/gmaps.js" %}"></script>-->
+    <meta name="author" content="Eduard Reñé and Víctor Diaz">
+    <meta name="description" content="Directori de festes de Catalunya">
+    <meta name="keywords" content="catalunya, festes, events, festa major">
     </head>
 <body>
     <script type="text/javascript">

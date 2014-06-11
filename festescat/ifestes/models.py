@@ -50,7 +50,7 @@ class Review(models.Model):
 
 
 class FestaReview(Review):
-    restaurant = models.ForeignKey(Festes)
+    festa = models.ForeignKey(Festes)
 
 
 class Events(models.Model):

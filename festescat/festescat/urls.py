@@ -24,9 +24,10 @@ urlpatterns = patterns('',
 
     #Festes
     url(r'^festes/$', festes, name='festes'),
-    url(r'^festes/(?P<pk>\d+)/$',
-        FestaDetail.as_view(),
-        name='festa_detail'),
+    #url(r'^festes/(?P<pk>\d+)/$',
+        #FestaDetail.as_view(),
+        #name='festa_detail'),
+    url(r'^festes/(?P<idFesta>\d+)/$', festa, name='festa_detail'),
     url(r'^festes/(?P<pk>\d+)/edit/$',
         LoginRequiredCheckIsOrganitzadorUpdateView.as_view(model=Festes,
             form_class=FestaForm),
