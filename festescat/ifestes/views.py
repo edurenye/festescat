@@ -80,7 +80,11 @@ def org(request, username):
             email=user.email, password=user.password, empresa=empresa)
         org.empresa = empresa
         org.save()
-        g = Group.objects.get(name='Organitzadors')
+        try:
+            g = Group.objects.get(name='Organitzadors')
+        except:
+            Group.objects.create(name='Organitzadors')
+            g = Group.objects.get(name='Organitzadors')
         g.user_set.add(org)
         return HttpResponseRedirect('/')
     else:
@@ -139,7 +143,11 @@ def register(request):
                 user_password)
             user.set_password(user_password)
             user.save()
-            g = Group.objects.get(name='Usuaris')
+            try:
+                g = Group.objects.get(name='Usuaris')
+            except:
+                Group.objects.create(name="Usuaris")
+                g = Group.objects.get(name='Usuaris')
             g.user_set.add(user)
             user = authenticate(username=user_username, password=user_password)
             login(request, user)
@@ -261,7 +269,7 @@ def festa(request, idFesta, format='html'):
             festa = Festes.objects.get(id=idFesta)
             mitja = 0.0
             canAddReview = 0
-            reviews = festa.festesreview_set
+            reviews = festa.festesreview_set.all()
             RATING_CHOICES = FestesReview.RATING_CHOICES
             organitzadors = Organitzadors.objects.all()
             org = False
