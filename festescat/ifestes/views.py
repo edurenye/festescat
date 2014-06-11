@@ -261,8 +261,8 @@ def festa(request, idFesta, format='html'):
             festa = Festes.objects.get(id=idFesta)
             mitja = 0.0
             canAddReview = 0
-            reviews = FestaReview.objects.all().filter(festa=idFesta)
-            RATING_CHOICES = FestaReview.RATING_CHOICES
+            reviews = festa.festesreview_set
+            RATING_CHOICES = FestesReview.RATING_CHOICES
             organitzadors = Organitzadors.objects.all()
             org = False
             if(len(reviews) != 0):
@@ -332,6 +332,11 @@ class OrganitzadorUpdateView(LoginRequiredMixin, UpdateView):
 class FestaDetail(DetailView):
     model = Festes
     template_name = 'festa.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(FestaDetail, self).get_context_data(**kwargs)
+        context['RATING_CHOICES'] = FestesReview.RATING_CHOICES
+        return context
 
 
 class FestaDelete(LoginRequiredMixin, CheckIsOrganitzador, DeleteView):

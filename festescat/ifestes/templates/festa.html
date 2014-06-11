@@ -40,13 +40,13 @@
                 {% endif %}
                 <div id="reviews">
                     <h3>Reviews</h3>
-                    {% if festes.festareview_set.all %}
+                    {% if festes.festesreview_set %}
                         <span rel="aggregateRating">
                             <p typeof="AggregateRating">
                                 <strong>Global rate: {{mitja}}</strong>
                                 <span property="ratingValue">{{festa.averageRating|stringformat:".1f"}}<span>
                     {% endif %}
-                    {% for review in festes.festareview_set.all %}
+                    {% for review in festes.festesreview_set.all %}
                         <p rel="reviewRating" typeof="Rating">
                             Rating: {{ review.rating}}
                         </p>

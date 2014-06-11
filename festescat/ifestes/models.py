@@ -35,6 +35,13 @@ class Festes(models.Model):
     def get_absolute_url(self):
         return reverse('festa_detail', kwargs={'pk': self.pk})
 
+    def averageRating(self):
+        ratingSum = 0.0
+        for review in self.festesreview_set.all():
+            ratingSum += review.rating
+        reviewCount = self.festesreview_set.count()
+        return ratingSum / reviewCount
+
 
 class Review(models.Model):
     RATING_CHOICES = ((1, 'one'), (2, 'two'), (3, 'three'), (4, 'four'),
@@ -49,7 +56,7 @@ class Review(models.Model):
         abstract = True
 
 
-class FestaReview(Review):
+class FestesReview(Review):
     festa = models.ForeignKey(Festes)
 
 
