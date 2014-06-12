@@ -33,3 +33,11 @@ class FestaSerializer(HyperlinkedModelSerializer):
         model = Festes
         field = ('nom', 'data_inici', 'data_fi', 'categoria', 'descripcio',
             'localitat')
+
+
+class FestaReviewSerializer(HyperlinkedModelSerializer):
+    url = HyperlinkedIdentityField(view_name='api_festareview-detail')
+
+    class Meta:
+        model = FestesReview
+        field = ('rating', 'comment', 'user', 'date', 'festa')

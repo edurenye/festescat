@@ -95,3 +95,8 @@ class UbiForm(ModelForm):
 class EventForm(ModelForm):
     class Meta:
         model = Events
+
+
+class FestesReviewForm(ModelForm):
+    class Meta:
+        model = FestesReview

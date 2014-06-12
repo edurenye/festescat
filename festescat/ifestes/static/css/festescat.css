@@ -1,0 +1,147 @@
+.star-rating {
+    position: relative;
+    width: 80px;
+    height: 16px;
+    margin-left: 5px !important;
+    padding: 0;
+    list-style: none;
+    background: url('/static/img/star.gif') top left repeat-x;
+}
+
+.star-rating li {
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+.star-rating li a {
+    display: block;
+    z-index: 20;
+    position: absolute;
+    width: 8px;
+    height: 16px;
+    padding: 0;
+    text-decoration: none;
+    text-indent: -9000px;
+    outline: none;
+}
+
+.star-rating li a:hover {
+    z-index: 2;
+    left: 0;
+    background: url('/static/img/star.gif') left bottom;
+}
+
+.star-rating a.one-star {
+    left: 0;
+}
+
+.star-rating a.one-star:hover {
+    width: 8px;
+}
+
+.star-rating a.two-stars {
+    left: 8px;
+}
+
+.star-rating a.two-stars:hover {
+    width: 16px;
+}
+
+.star-rating a.three-stars {
+    left: 16px;
+}
+
+.star-rating a.three-stars:hover {
+    width: 24px;
+}
+
+.star-rating a.four-stars {
+    left: 24px;
+}
+
+.star-rating a.four-stars:hover {
+    width: 32px;
+}
+
+.star-rating a.five-stars {
+    left: 32px;
+}
+
+.star-rating a.five-stars:hover {
+    width: 40px;
+}
+
+.star-rating a.six-stars {
+    left: 40px;
+}
+
+.star-rating a.six-stars:hover {
+    width: 48px;
+}
+
+.star-rating a.seven-stars {
+    left: 48px;
+}
+
+.star-rating a.seven-stars:hover {
+    width: 56px;
+}
+
+.star-rating a.eight-stars {
+    left: 56px;
+}
+
+.star-rating a.eight-stars:hover {
+    width: 64px;
+}
+
+.star-rating a.nine-stars {
+    left: 64px;
+}
+
+.star-rating a.nine-stars:hover {
+    width: 72px;
+}
+
+.star-rating a.ten-stars {
+    left: 72px;
+}
+
+.star-rating a.ten-stars:hover {
+    width: 80px;
+}
+
+.star-rating li.current-rating {
+    display: block;
+    z-index: 1;
+    position: absolute;
+    height: 16px;
+    text-indent: -9000px;
+    background: url('/static/img/star.gif') left center;
+}
+
+#communityVotes {
+    float: right;
+    width: 100px;
+    height: 60px;
+}
+
+#communityVotes .ratingBox {
+    width: 80px;
+    height: 43px;
+    border: 4px solid #e3e3e3;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Oswald';
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 43px;
+    color: #0093e8;
+    background-color: #f8f8f8;
+}
+
+#communityVotes .starsContainer {
+    float: left;
+    margin-top: 5px;
+}

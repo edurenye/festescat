@@ -63,6 +63,9 @@ class Review(models.Model):
 class FestesReview(Review):
     festa = models.ForeignKey(Festes)
 
+    def get_absolute_url(self):
+        return reverse('festa_detail', kwargs={'pk': self.festa.pk})
+
 
 class Events(models.Model):
     nom = models.CharField(max_length=50)

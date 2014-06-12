@@ -213,9 +213,9 @@ def festes(request, format='html'):
         return Http405()
 
 
-def festa(request, idFesta, format='html'):
+def festa(request, pk, format='html'):
     try:
-        festa = Festes.objects.get(id=idFesta)
+        festa = Festes.objects.get(id=pk)
     except:
         festa = None
     if request.method == 'PUT':
@@ -266,7 +266,7 @@ def festa(request, idFesta, format='html'):
                 dict(newfestaform=nff),
                 context_instance=RequestContext(request, variables))
         else:
-            festa = Festes.objects.get(id=idFesta)
+            festa = Festes.objects.get(id=pk)
             mitja = 0.0
             canAddReview = 0
             reviews = festa.festesreview_set.all()
@@ -276,16 +276,18 @@ def festa(request, idFesta, format='html'):
             if(len(reviews) != 0):
                 for review in reviews:
                     mitja = mitja + review.rating
-                    if(user.id == review.user.id):
+                    if(request.user.id == review.user.id):
                         canAddReview = 1
                 mitja = mitja / (len(reviews))
             if request.user in organitzadors:
                 org = True
             if(format == 'html'):
+                frf = FestesReviewForm()
                 variables = Context({
                     'titlehead': 'Gestor de Festes',
                     'pagetitle': 'Festes',
                     'org': org,
+                    'events': festa.events_set.all(),
                     'festes': festa,
                     'reviews': reviews,
                     'RATING_CHOICES': RATING_CHOICES,
@@ -293,17 +295,18 @@ def festa(request, idFesta, format='html'):
                     'canAddReview': canAddReview,
                 })
                 return render_to_response('festa.html',
-                context_instance=RequestContext(request, variables))
+                    dict(reviewform=frf),
+                    context_instance=RequestContext(request, variables))
             else:
-                return formate(format, Festes.objects.filter(id=idFesta))
+                return formate(format, Festes.objects.filter(id=pk))
     else:
         return HttpResponseNotAllowed()
 
 
-def assist(request, idFesta):
+def assist(request, pk):
     if request.method == 'POST':
         user = Usuaris.objects.get(username=request.user.username)
-        festa = Festes.objects.get(id=idFesta)
+        festa = Festes.objects.get(id=pk)
         user.assistencia.add(festa)
         user.save()
         return HttpResponseRedirect('/festes/')
@@ -311,10 +314,10 @@ def assist(request, idFesta):
         return HttpResponseNotAllowed()
 
 
-def no_assist(request, idFesta):
+def no_assist(request, pk):
     if request.method == 'POST':
         user = Usuaris.objects.get(username=request.user.username)
-        festa = Festes.objects.get(id=idFesta)
+        festa = Festes.objects.get(id=pk)
         user.assistencia.remove(festa)
         return HttpResponseRedirect('/festes/')
     else:
@@ -351,6 +354,20 @@ class FestaDelete(LoginRequiredMixin, CheckIsOrganitzador, DeleteView):
     model = Festes
     template_name = 'confirm_delete.html'
     success_url = reverse_lazy('festes')
+
+
+class ReviewDelete(LoginRequiredMixin, DeleteView):
+    model = Ubicacions
+    template_name = 'confirm_delete.html'
+    success_url = HttpResponseRedirect('/festes/')
+
+
+class ReviewCreate(LoginRequiredMixin, CreateView):
+        template_name = 'form.html'
+
+
+class UpdateReview(LoginRequiredMixin, UpdateView):
+        template_name = 'form.html'
 
 
 class UbicacioDetail(DetailView):
@@ -496,3 +513,13 @@ class APIFestaDetail(generics.RetrieveUpdateDestroyAPIView):
 class APIFestesList(generics.ListCreateAPIView):
     model = Festes
     serializer_class = FestaSerializer
+
+
+class APIFestaReviewDetail(generics.RetrieveUpdateDestroyAPIView):
+    model = FestesReview
+    serializer_class = FestaReviewSerializer
+
+
+class APIFestaReviewsList(generics.ListCreateAPIView):
+    model = FestesReview
+    serializer_class = FestaReviewSerializer
