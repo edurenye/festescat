@@ -49,7 +49,7 @@ class Festes(models.Model):
 
 class Review(models.Model):
     RATING_CHOICES = ((1, 'one'), (2, 'two'), (3, 'three'), (4, 'four'),
-        (5, 'five'))
+        (5, 'five'), (6, 'six'), (7, 'seven'), (8, 'eight'), (9, 'nine'))
     rating = models.PositiveSmallIntegerField('Rating(stars)', blank=False,
         default=3, choices=RATING_CHOICES)
     comment = models.TextField(blank=True, null=True)

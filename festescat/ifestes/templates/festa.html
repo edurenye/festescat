@@ -74,13 +74,25 @@
                                 <strong>Global rate: {{mitja}}</strong>
                                 <span property="ratingValue">{{festa.averageRating|stringformat:".1f"}}<span>
                     {% endif %}
+                    <ul rel="review">
                     {% for review in festes.festesreview_set.all %}
-                        <p rel="reviewRating" typeof="Rating">
-                            Rating: {{ review.rating}}
-                        </p>
+                        <li typeof="Review">
+                            <p rel="reviewRating" typeof="Rating">
+                                <span property="worstRating" content="{{ RATING_CHOICES.0.0 }}"></span>
+                                <span property="ratingValue">{{ review.rating }}</span>
+                                star{{ review.rating|pluralize }}
+                                {% with RATING_CHOICES|last as best %}
+                                    <span property="bestRating"	content="{{ best.0 }}"></span>
+                                {% endwith %}
+                            <p property="description">{{ review.comment }}</p>
+                            <p>Creat per <span property="author">{{ review.user }}</span>
+                                on <span property="publishDate">{{ review.date }}</span>
+                            </p>
+                        </li>
                     {% empty %}
-                        <p>No hi ha reviews</p>
+                        <li><p>No hi ha reviews</p></li>
                     {% endfor %}
+                    </ul>
                 </div>
             </div>
             <div class="col-md-4">
