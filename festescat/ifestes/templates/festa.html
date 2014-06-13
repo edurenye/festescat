@@ -4,6 +4,7 @@
 <div id="LlistaElems" class="col-md-8">
 <h1>Festa</h1>
 {% if festes %}
+<span vocab="http://schema.org/" typeof="EntertainmentBusiness">
     {% ifusergroup Organitzadors %}
     <form id='formulari' method="PUT" action="delete/">
         <button class="btn btn-primary" type="submit">
@@ -22,16 +23,21 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8">
-                <p>Nom: {{ festes.nom }}</p>
+                <p>Nom: <span property="name">{{ festes.nom }}</span></p>
                 <p>Data d'inici: {{ festes.data_inici }}</p>
                 <p>Data de finalització: {{ festes.data_fi }}</p>
                 <p>Categoria: {{ festes.categoria}}</p>
                 <p>Descripció: {{ festes.descripcio }}</p>
-                <p>Localitat: {{ festes.localitat }}</p>
+                <span rel="location">
+                    <span typeof="Place">
+                        <p>Localitat: <span property="addressLocality">{{ festes.localitat }}</span></p>
+                    </span>
+                </span>
                 {% if events %}
                 <h2>Events</h2>
                     <ul>
                     {% for event in events %}
+                        <span property="event" resource="/events/{{event.id}}/" typeof="Event"></span>
                         <li><p><a href="/events/{{event.id}}/"><h3>{{event.nom}}</h3></a></p></li>
                     {% endfor %}
                     </ul>
@@ -40,7 +46,7 @@
                 {% endif %}
                 <div id="reviews">
                     <div id="communityVotes">
-                        <div id="rating" class="ratingBox">{{mitja}}</div>	
+                        <div id="rating" class="ratingBox">{{mitja|stringformat:".1f"}}</div>	
                             <div class="starsContainer">
                                 <ul onmouseout="javascript:mostrarPuntuacio(mediaInfo.rating)" class="star-rating">
                                     <li style="width: 80px;" id="current-rating" class="current-rating">5</li>
@@ -64,10 +70,18 @@
                     </div>
                     <h3>Reviews</h3>
                     {% if festes.festesreview_set %}
+                    <div class="hidden">
                         <span rel="aggregateRating">
                             <p typeof="AggregateRating">
-                                <strong>Global rate: {{mitja}}</strong>
-                                <span property="ratingValue">{{festa.averageRating|stringformat:".1f"}}<span>
+                                Mitjana del ratio
+                                <span property="ratingValue">{{ mitja|stringformat:".1f" }}</span>
+                                {% with festes.festesreview_set.all|length as reviewCount %}
+                                de <span property="reviewCount">{{ reviewCount }}</span>
+                                review{{ reviewCount|pluralize }}
+                                {% endwith %}
+                            </p>
+                        </span>
+                    </div>
                     {% endif %}
                     <ul rel="review">
                     {% for review in festes.festesreview_set.all %}
@@ -100,6 +114,7 @@
             </div>
         </div>
     </div>
+</span>
 </div>
 {% else %}
     <p>No existeix aquesta festa.</p>

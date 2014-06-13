@@ -4,6 +4,7 @@
 <div id="LlistaElems" class="col-md-8">
 <h1>Event</h1>
 {% if events %}
+    <span vocab="http://schema.org/" typeof="Event">
     <ul>
         {% ifusergroup Organitzadors %}
         <form id='formulari' method="PUT" action="delete/">
@@ -20,13 +21,15 @@
             </form>
         </div>
         {% endifusergroup %}
-        <p>Nom: {{ events.nom }}</p>
+        <p>Nom: <span property="name">{{ events.nom }}</span></p>
         <p>Tipus: {{ events.tipus }}</p>
-        <p>Descripcio: {{ events.descripcio }}</p>
+        <p>Descripcio: <span property="description">{{ events.descripcio }}</span></p>
         <a href="/festes/{{events.festa.id}}/"><p>Festa: {{ events.festa.nom}}</p></a>
+        <span property="location" resource="/ubicacions/{{event.ubicacio.id}}/" typeof="Place"></span>
         <a href="/ubicacions/{{events.ubicacio.id}}/"><p>Ubicació: {{ events.ubicacio.adressa }}</p></a>
         <p>Data: {{ events.data }}</p>
     </ul>
+    </span>
 {% else %}
     <p>No existeix aquest event.</p>
 {% endif %}

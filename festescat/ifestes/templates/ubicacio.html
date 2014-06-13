@@ -6,6 +6,7 @@
 {% if ubicacions %}
     <span vocab="http://schema.org/" typeof="Place">
     <ul>
+        <span property="name" content="{{ ubicacions.adressa }}"></span>
         {% ifusergroup Organitzadors %}
         <form id='formulari' method="PUT" action="delete/">
             <button class="btn btn-primary" type="submit">
