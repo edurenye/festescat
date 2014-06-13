@@ -110,5 +110,11 @@ Tota aquesta informacio esta disponible ens els formats: JSON,HTML i XML
 	</tr>
 
 </table>
+Maquetació feta amb bootstrap (CSS i JS).
+
+Semantica:
+	Entitat Festes: Hem usat el tipus EntertainmentBusiness que conté reviews i està relacionat amb events.
+	Entitat Events: Hem usat el tipus event i està relacionat amb ubicacions.
+	Entitat Ubicacions: Hem usat el tipus Place.
 </body>
 </html>
