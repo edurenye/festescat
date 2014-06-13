@@ -4,6 +4,9 @@ function showAddForm() {
 }
 
 function showReviewForm() {
+    document.getElementById("id_rating").parentNode.parentNode.setAttribute("class","hidden");
+    document.getElementById("id_user").parentNode.parentNode.setAttribute("class","hidden");
+    document.getElementById("id_festa").parentNode.parentNode.setAttribute("class","hidden");
     document.getElementById("createReview").setAttribute("class","patata");
 }
 
@@ -15,6 +18,9 @@ function mostrarPuntuacio(valor){
     $('#rating').text(valor);
 }
 
-function puntuar(rating){
+function puntuar(rating, user, festa){
+    document.getElementById('id_rating').value = rating;
+    document.getElementById('id_user').value = user;
+    document.getElementById('id_festa').value = festa;
     showReviewForm();
 }

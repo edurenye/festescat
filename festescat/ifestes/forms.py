@@ -100,3 +100,4 @@ class EventForm(ModelForm):
 class FestesReviewForm(ModelForm):
     class Meta:
         model = FestesReview
+        fields = ['rating', 'comment', 'user', 'festa']
